@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="io.sloeber.core.sketch.0">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="io.sloeber.core.sketch.0" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" cleanCommand="rm -f" description="" id="io.sloeber.core.sketch.0" name="Release" parent="io.sloeber.core.configuration.release">
+					<folderInfo id="io.sloeber.core.sketch.0." name="/" resourcePath="">
+						<toolChain id="io.sloeber.core.toolChain.release.753158484" name="Arduino Toolchain (Sloeber editie)" superClass="io.sloeber.core.toolChain.release">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.1080199301" name="Arduino doel" osList="all" superClass="io.sloeber.targetplatform"/>
+							<builder buildPath="${workspace_loc:/WMMI211_Firmware}/Release" id="io.sloeber.sketch.builder.755420773" keepEnvironmentInBuildfile="false" name="Arduino sketch bouwer" parallelBuildOn="false" superClass="io.sloeber.sketch.builder"/>
+							<tool id="io.sloeber.tool.sketch.compiler.cpp.1760077519" name="Arduino C++ bouwer" superClass="io.sloeber.tool.sketch.compiler.cpp">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.966407104" name="Include mappen (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SoftwareSerial/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Wire/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/EEPROM/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BME280_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_CCS811_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_Unified_Sensor}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Rtc_by_Makuna/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/TimeAlarms}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Time}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/DS1307RTC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Timezone/src}&quot;"/>
+								</option>
+								<inputType id="io.sloeber.compiler.cpp.sketch.input.443655966" name="CPP bron bestanden" superClass="io.sloeber.compiler.cpp.sketch.input"/>
+							</tool>
+							<tool id="io.sloeber.tool.compiler.c.998991268" name="Arduino C bouwer" superClass="io.sloeber.tool.compiler.c">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1171915566" name="Include mappen (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SoftwareSerial/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Wire/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/EEPROM/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BME280_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_CCS811_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_Unified_Sensor}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Rtc_by_Makuna/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/TimeAlarms}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Time}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/DS1307RTC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Timezone/src}&quot;"/>
+								</option>
+								<inputType id="io.sloeber.compiler.c.sketch.input.276482556" name="C bron bestanden" superClass="io.sloeber.compiler.c.sketch.input"/>
+							</tool>
+							<tool id="io.sloeber.tool.sketch.compiler.s.1984172799" name="Arduino machine code bouwer" superClass="io.sloeber.tool.sketch.compiler.s">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.499816329" name="Include mappen (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/core/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SoftwareSerial/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Wire/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/EEPROM/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BME280_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_CCS811_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_Unified_Sensor}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Rtc_by_Makuna/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/TimeAlarms}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Time}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/DS1307RTC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Timezone/src}&quot;"/>
+								</option>
+								<inputType id="io.sloeber.compiler.S.sketch.input.1833642262" name="Assembly bron bestanden" superClass="io.sloeber.compiler.S.sketch.input"/>
+							</tool>
+							<tool id="io.sloeber.tool.ar.1029804907" name="Arduino archief" superClass="io.sloeber.tool.ar"/>
+							<tool id="io.sloeber.tool.combine.1906615266" name="Arduino samenvoeger" superClass="io.sloeber.tool.combine"/>
+							<tool id="io.sloeber.tool.objcopy.eep.1029167363" name="Arduino tool objcopy opdracht" superClass="io.sloeber.tool.objcopy.eep"/>
+							<tool id="io.sloeber.tool.size.1674688884" name="Arduino tool druk bestands grote" superClass="io.sloeber.tool.size"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="io.sloeber.core.sketch.0.libraries/**/._*" resourcePath="libraries/**/._*">
+						<toolChain id="io.sloeber.core.toolChain5.1827380465" superClass="io.sloeber.core.toolChain5">
+							<targetPlatform id="io.sloeber.core.sketch.0.libraries/**/._*.1838124836" name=""/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="io.sloeber.core.sketch.0.libraries/?*/**/test*/**" resourcePath="libraries/?*/**/test*/**">
+						<toolChain id="io.sloeber.core.toolChain3.1204364037" superClass="io.sloeber.core.toolChain3">
+							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/**/test*/**.587246539" name=""/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="io.sloeber.core.sketch.0.libraries/?*/**/?xtras/**" resourcePath="libraries/?*/**/?xtras/**">
+						<toolChain id="io.sloeber.core.toolChain2.1240985168" superClass="io.sloeber.core.toolChain2">
+							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/**/?xtras/**.1742506413" name=""/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="io.sloeber.core.sketch.0.libraries/?*/**/?xamples/**" resourcePath="libraries/?*/**/?xamples/**">
+						<toolChain id="io.sloeber.core.toolChain1.449443290" superClass="io.sloeber.core.toolChain1">
+							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/**/?xamples/**.859842896" name=""/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="io.sloeber.core.sketch.0.libraries/?*/**/third-party/**" resourcePath="libraries/?*/**/third-party/**">
+						<toolChain id="io.sloeber.core.toolChain4.908183846" superClass="io.sloeber.core.toolChain4">
+							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/**/third-party/**.606340335" name=""/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="io.sloeber.core.sketch.0.libraries/?*/utility/*/*" resourcePath="libraries/?*/utility/*/*">
+						<toolChain id="io.sloeber.core.toolChain6.497183141" superClass="io.sloeber.core.toolChain6">
+							<targetPlatform id="io.sloeber.core.sketch.0.libraries/?*/utility/*/*.1977055250" name=""/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="libraries/DS1307RTC/docs|libraries/Time/docs|libraries/Adafruit_BME280_Library/assets|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="WMMI211_Firmware.io.sloeber.core.sketch.757872783" name="Arduino sketch" projectType="io.sloeber.core.sketch"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope"/>
+</cproject>
