@@ -13,7 +13,7 @@
 #define USE_GFX_KBV
 #include "ADA_GFX_kbv.h"
 #else
-#include "..\Adafruit-GFX-Library\Adafruit_GFX.h"
+#include <Adafruit_GFX.h>
 #endif
 
 class MCUFRIEND_kbv : public Adafruit_GFX {

@@ -42,44 +42,24 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/variants/mega</locationURI>
 		</link>
 		<link>
-			<name>libraries/Adafruit_BME280_Library</name>
-			<type>2</type>
-			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_BME280_Library</location>
-		</link>
-		<link>
 			<name>libraries/Adafruit_BusIO</name>
 			<type>2</type>
 			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_BusIO</location>
 		</link>
 		<link>
-			<name>libraries/Adafruit_CCS811_Library</name>
+			<name>libraries/Adafruit_GFX_Library</name>
 			<type>2</type>
-			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_CCS811_Library</location>
+			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_GFX_Library</location>
 		</link>
 		<link>
-			<name>libraries/Adafruit_Unified_Sensor</name>
+			<name>libraries/Adafruit_TFTLCD_Library</name>
 			<type>2</type>
-			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_Unified_Sensor</location>
-		</link>
-		<link>
-			<name>libraries/DS1307RTC</name>
-			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/DS1307RTC/1.4.1</locationURI>
+			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_TFTLCD_Library</location>
 		</link>
 		<link>
 			<name>libraries/EEPROM</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/EEPROM</locationURI>
-		</link>
-		<link>
-			<name>libraries/Rtc_by_Makuna</name>
-			<type>2</type>
-			<location>C:/Users/awaal/Documents/Arduino/libraries/Rtc_by_Makuna</location>
-		</link>
-		<link>
-			<name>libraries/SD</name>
-			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/SD/1.2.4</locationURI>
 		</link>
 		<link>
 			<name>libraries/SPI</name>
@@ -90,21 +70,6 @@
 			<name>libraries/SoftwareSerial</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/SoftwareSerial</locationURI>
-		</link>
-		<link>
-			<name>libraries/Time</name>
-			<type>2</type>
-			<location>C:/Users/awaal/Documents/Arduino/libraries/Time</location>
-		</link>
-		<link>
-			<name>libraries/TimeAlarms</name>
-			<type>2</type>
-			<location>C:/Users/awaal/Documents/Arduino/libraries/TimeAlarms</location>
-		</link>
-		<link>
-			<name>libraries/Timezone</name>
-			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Timezone/1.2.4</locationURI>
 		</link>
 		<link>
 			<name>libraries/Wire</name>

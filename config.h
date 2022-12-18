@@ -11,7 +11,6 @@
 
 // number of screens we have configured in the system. Should be replaced with
 // something smarter
-
 #define NRSCREENS 8
 #define MAXSCREEN (NRSCREENS + 2)
 
@@ -27,15 +26,6 @@
 
 #define WEATHER_FORECAST // to get weather forecast from SMHI
 
-#ifndef WITH_ESP01
-#undef WEATHER_FORECAST
-#endif
-
-#define SMHI_HOST "opendata-download-metfcst.smhi.se"
-#define SMHI_PATH                                                              \
-  "/api/category/pmp3g/version/2/geotype/point/lon/" LON "/lat/" LAT           \
-  "/data.json"
-
 #define INITIAL_SLIDESHOW_STATUS                                               \
   1 // change to 0 to not run slideshow from start. Using the slideshow from
     // start will show the config screens, before getting into the loop
@@ -48,7 +38,17 @@
 
 // for BME280
 
-#define SEALEVELPRESSURE (1013.25)
+#define SEALEVELPRESSURE 1013.25
+
+/* --- CCS811 sensor --- */
+#define CCS811_ADDR 0x5B      //Default I2C Address of CCS811 sensor (secondary Address is 0x5A if jumper is closed)
+
+#define BME280_ADDR 0x77      //Default I2C Address of BME280 sensor, can be 0x76 if jumper closed
+//
+/* --- DIGITAL outputs --- */
+#define GreenOutPin   30
+#define YellowOutPin  31
+#define RedOutPin     32
 
 // display positioning
 #define startXimg 10

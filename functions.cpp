@@ -1,3 +1,13 @@
+#include "config.h"
+#include "functions.h"
+#include "globals.h"
+#include "bitmaps.h"
+#include <Arduino.h>
+//#include "src\SparkFun_CCS811\src\SparkFunCCS811.h"    	  // CCS811 library by SparkFun
+#include <Fonts\FreeSans9pt7b.h>
+#include <EEPROM.h>                             // Library to read & store info in EEPROM long term memory
+
+
 /***************************************/
 /* ------------ FUNCTIONS ------------ */
 /***************************************/
@@ -259,7 +269,7 @@ int returnMinutes(unsigned long Millis)
 }
 
 //return the day as a string
-String dayAsString(const Time::Day day) {
+char* dayAsString(const Time::Day day) {
   switch (day) {
     case Time::kSunday: return "Sunday";
     case Time::kMonday: return "Monday";
@@ -274,7 +284,7 @@ String dayAsString(const Time::Day day) {
 
 
 // return the current time in a nice format
-String returnTime(Time currentTime) 
+char* returnTime(Time currentTime)
 {
   // Get the current time and date from the chip.
   Time t_now = currentTime;
@@ -335,8 +345,8 @@ void showScreen(int screenNr)
   int Xindic;
   float calcVal;
   //local vars for plotting the scales/graphs
-  int startXimg = 10; int startYimg = 175;
-  int widthImg = 300;  int heightImg = 1;
+  //int startXimg = 10; int startYimg = 175;
+  //int widthImg = 300;  int heightImg = 1;
 
   //if a screen has been changed, clear the part below the header & update menu buttons
   if(currentScreenNr != previousScreenNr)
@@ -990,18 +1000,17 @@ void lightningscreen()
 void setupAS3935()
 {
     // Set everything to default values
-    if(AS3935_SPI)
-    {
-              lightningSPI.resetSettings();
-    }else
-    {
-             lightningIIC.resetSettings();
+    if(AS3935_SPI) {
+    		  lightningSPI.resetSettings();
+    }
+    else {
+         	 lightningIIC.resetSettings();
     }
     delay(500);
     
     //read value for AS3935_OUTDOORS out of EEPROM memory
     AS3935_OUTDOORS = EEPROM.read(AS3935_outdoor_EEPROMaddr);
-    //Serial.print("AS3935_OUTDOORS = "); Serial.println(AS3935_OUTDOORS);
+    Serial.print("AS3935_OUTDOORS = "); Serial.println(AS3935_OUTDOORS);
     // The lightning detector defaults to an outdoor setting (more gain/sensitivity), but this can be modified via the setup page in the GUI
     int enviVal;
     if(AS3935_OUTDOORS)
