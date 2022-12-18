@@ -376,7 +376,7 @@ void showScreen(int screenNr)
         //set font to standard system font
         tft.setFont();
         //test LED
-        controlLED('W');
+        controlLED('Y');
         delay(1500);
         //cycle logo & LED color
         showbgd(35, 65, EarthListener_200x150, 200, 150, RED, BLACK);

@@ -88,9 +88,9 @@ void loop(void)
            if(MetricON)
            {
               if(timeNow.date <10){tft.print("0");}
-              tft.print(timeNow.date); tft.print("/"); 
+              tft.print(timeNow.date); tft.print("-");
               if(timeNow.mon <10){tft.print("0");}
-              tft.print(timeNow.mon); tft.print("/"); tft.print(timeNow.yr);
+              tft.print(timeNow.mon); tft.print("-"); tft.print(timeNow.yr);
            }
            else
            {  

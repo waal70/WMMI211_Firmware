@@ -332,9 +332,7 @@ void setup(void)
   {
     RTCpresent = true;
     Serial.println("Real Time Clock available! Current time:");
-    String temp = returnTime(t);
-
-    Serial.println(returnTime(t));
+    Serial.println((__FlashStringHelper*)returnTime(t));
   }
   Serial.println();
   
