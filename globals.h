@@ -28,8 +28,7 @@ inline float AMBIENTPRESSURE_BME280;
 inline float AMBIENTPRESSURE_BME280_c; //converted to mBar (= Pa / 100);
 inline float ALTITUDE_BME280;
 inline float TEMP_BME280;
-inline float TEMP_comp = -3.3;   //the EarthListener is warmed up from the TFT screen hence reporting a higher temperature. This compensation corrects this.
-inline float HUMI_comp = 17;     //same for the humidity. Values are experimental and should be changed according to your findings.
+
 
 
 /* --- AS3935 sensor --- */

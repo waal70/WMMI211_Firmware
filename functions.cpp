@@ -896,7 +896,6 @@ void lightningscreen()
             {
                  lightning_dist_km = lightningIIC.distanceToStorm(); 
             }
-            
             Serial.print("Lightning detected! Distance to strike: ");
             lastErrorLine1 = "Lightning detected!    ";
             lastErrorLine2 = "Distance to strike:";

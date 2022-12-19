@@ -2,6 +2,10 @@
 #include "globals.h"
 #include "functions.h"
 #include <EEPROM.h>                             // Library to read & store info in EEPROM long term memory
+
+#include "model/Environment.h"						// My code to wrap the BME280
+#include "model/Gas.h"								// My code to wrap the CCS811
+#include "model/Lightning.h"							// My code to wrap the AS3935
 /***************************************/
 /* ----------- SETUP CODE ------------ */
 /***************************************/
@@ -68,14 +72,7 @@ void setup(void)
   }
 
   tft.begin(identifier);
-  /*
-  //Benchmark filling screen R/G/B
-  Serial.println(F("Benchmark                Time (microseconds)"));
-  Serial.print(F("Screen fill              "));
-  Serial.println(testFillScreen());
-  delay(500);
-  Serial.println(F("Done!"));
-  */
+
   tft.fillScreen(BLACK);
   tft.setRotation(1);
   pinMode(touchPin, OUTPUT);  //pin to control reading of touchscreen
@@ -117,97 +114,25 @@ void setup(void)
 
 
   /* --- CCS811 sensor feedback --- */
-  Serial.println("***CCS811 sensor***");
-  CCS811Core::status returnCode = myCCS811.begin();
-  Serial.print("CCS811 begin exited with: ");
-  printDriverError(returnCode);
-
-  //printDriverError( returnCode );
+  Gas myGas;
+  myGas.connect();
   Serial.println();
   Serial.println();
 
 
   /* --- AS3935 sensor feedback --- */
-  Serial.println("***AS3935 sensor feedback***");
-  Serial.print("Checking interface...");
-  
   tft.setCursor(15, 135);
   tft.setTextColor(WHITE); 
   tft.setTextSize(2);
   tft.print("AS3935 status: ");
   
-  //read value for AS3935_SPI out of EEPROM memory
-  AS3935_SPI = EEPROM.read(AS3935_SPI_EEPROMaddr);
-  Serial.print("AS3935_SPI = "); Serial.println(AS3935_SPI);
-  if(AS3935_SPI)
+  Lightning myLightning;
+  myLightning.connect();
+
+  if(myLightning.isConnected)
   {
-    //SPI interface 
-    Serial.println(" SPI");
-    AS3935_SPI = true;    //set in case it's not properly set
-
-    SPI.begin(); // For SPI
-    //lightningSPI.beginSPI(user_CSPin, spiPortSpeed, spiPort)
-    if(!lightningSPI.beginSPI(spiCS, 2000000) )
-    { 
-      AS3935_bootOK = false;
-    }
-    else
-    {
-      //double check to be sure (read a value)
-      int spikeValTest = lightningSPI.readSpikeRejection();
-      if(spikeValTest != 0)
-      {
-        AS3935_bootOK = true;
-      }
-      else
-      {
-        AS3935_bootOK = false;
-      }
-    }
-
-  }
-  else
-  {
-    //IIC interface
-    Serial.println(" IIC");
-    AS3935_SPI = false;  //set in case it's not properly set
-
-    Serial.print("Scanning at address 0x");
-    if(AS3935_ADD < 10){Serial.print("0");}
-    Serial.print(AS3935_ADD,HEX);
-    Serial.println(", please wait...");
-    
-    Wire.begin(); // Begin Wire before lightning sensor. 
-    if( !lightningIIC.begin() ){ // Initialize the sensor. 
-      AS3935_bootOK = false;
-    }
-    else
-    {
-      //double check to be sure (read a value)
-      int spikeValTest = lightningIIC.readSpikeRejection();
-      if(spikeValTest != 0)
-      {
-        AS3935_bootOK = true;
-      }
-      else
-      {
-        AS3935_bootOK = false;
-      }
-    }
-  }
-
-  if(AS3935_bootOK)
-  {
-      Serial.println("Lightning sensor ready! Starting setup procedure...");
       tft.setTextColor(GREEN); 
       tft.print("DETECTED");
-  
-      updateLightningSense(); //set the sensitivity of the sensor
-      setupAS3935();  //run setup of AS3935 sensor
-    
-      // enable interrupt (hook IRQ pin to Arduino Uno/Mega interrupt to AS3935_IRQPIN -> 18)
-      pinMode(AS3935_IRQPIN, INPUT);   // See http://arduino.cc/en/Tutorial/DigitalPins
-      attachInterrupt(digitalPinToInterrupt(AS3935_IRQPIN), interruptFunction, CHANGE);
       Serial.println("Setup AS3935 sensor done.");
       Serial.println();  
   }
@@ -220,42 +145,29 @@ void setup(void)
       delay(1000);
   }
 
-  
-  /* --- BME280 sensor feedback --- */
-  Serial.println("***BME280 Sensor feedback***");
-  myBME280.setI2CAddress(BME280_ADDR);        //The I2C address must be set before .begin() otherwise the cal values will fail to load
+  //////////BME280
+  Environment myEnv;
+  //myEnv = Environment();
+  myEnv.connect();
   
   tft.setCursor(15, 165);
   tft.setTextColor(WHITE); 
   tft.setTextSize(2);
   tft.print("BME280 status: ");
   
-  if(myBME280.beginI2C() == false)
+  if(!myEnv.isConnected)
   {
-    Serial.println("BME280 Sensor connection failed!");
     tft.setTextColor(RED); 
     tft.print("NOT FOUND");
   }
   else
   {
-    Serial.println("BME280 Sensor connection successful!");
     tft.setTextColor(GREEN); 
     tft.print("DETECTED");
   }
-  myBME280.setFilter(1); //0 to 4 is valid. Filter coefficient. See 3.4.4
-  myBME280.setStandbyTime(0); //0 to 7 valid. Time between readings. See table 27.
-  myBME280.setTempOverSample(1); //0 to 16 are valid. 0 disables temp sensing. See table 24.
-  myBME280.setPressureOverSample(1); //0 to 16 are valid. 0 disables pressure sensing. See table 23.
-  myBME280.setHumidityOverSample(1); //0 to 16 are valid. 0 disables humidity sensing. See table 19.
-  myBME280.setMode(MODE_NORMAL); //MODE_SLEEP, MODE_FORCED, MODE_NORMAL is valid. See 3.3
-
-  myBME280.setReferencePressure(SEALEVELPRESSURE); //Adjust the sea level pressure used for altitude calculations. This should be a variable, not fixed!
-  //If you do not set the correct sea level pressure for your location FOR THE CURRENT DAY it will not be able to calculate the altitude accurately!
-  //Barometric pressure at sea level changes daily based on the weather!
   //read value from EEPROM if Temp is in °F or °C and lightning units are in km or mi
   MetricON = EEPROM.read(MetricON_EEPROMaddr);  //read metric or imperial state from memory. If not set, this will be true, since all EEPROM addresses are 0xFF by default
   Serial.println();
-
 
   /* --- set buzzer pin & read value from EEPROM --- */
   BuzzerEnabled = EEPROM.read(Buzzer_EEPROMaddr);
@@ -332,7 +244,7 @@ void setup(void)
   {
     RTCpresent = true;
     Serial.println("Real Time Clock available! Current time:");
-    Serial.println((__FlashStringHelper*)returnTime(t));
+    //Serial.println((__FlashStringHelper*)returnTime(t));
   }
   Serial.println();
   

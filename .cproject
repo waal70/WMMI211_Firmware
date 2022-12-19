@@ -96,7 +96,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="libraries/Adafruit_TFTLCD_Library/bitmaps|libraries/Adafruit_TFTLCD_Library/assets|libraries/Adafruit_GFX_Library/Fonts|libraries/Adafruit_GFX_Library/fontconvert|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*|libraries/Adafruit_TFTLCD_Library/assets|libraries/?*/**/?xtras/**|libraries/Adafruit_GFX_Library/fontconvert|libraries/Adafruit_GFX_Library/Fonts|libraries/Adafruit_TFTLCD_Library/bitmaps|libraries/?*/**/?xamples/**|libraries/?*/**/test*/**" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

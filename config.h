@@ -44,6 +44,8 @@
 #define CCS811_ADDR 0x5B      //Default I2C Address of CCS811 sensor (secondary Address is 0x5A if jumper is closed)
 
 #define BME280_ADDR 0x77      //Default I2C Address of BME280 sensor, can be 0x76 if jumper closed
+#define TEMP_comp  -3.3   //the EarthListener is warmed up from the TFT screen hence reporting a higher temperature. This compensation corrects this.
+#define HUMI_comp 17     //same for the humidity. Values are experimental and should be changed according to your findings.
 //
 /* --- DIGITAL outputs --- */
 #define GreenOutPin   30
