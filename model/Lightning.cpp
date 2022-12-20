@@ -6,6 +6,9 @@
 bool Lightning::isTriggered = false; //needed for static variables
 unsigned long Lightning::lastTriggered = 0;
 
+//forward method declaration
+void Lightning::connect();
+
 Lightning::Lightning() : myAS3935(AS3935_ADD)  {
 	Serial.println("***AS3935 Sensor feedback***");
 	MaskDisturber = 1;
@@ -18,6 +21,7 @@ Lightning::Lightning() : myAS3935(AS3935_ADD)  {
 	isConnected = false;
 	//this->isTriggered = false;
 	WatchdogThreshold = 0;
+	connect();
 }
 
 Lightning::~Lightning(){

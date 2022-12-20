@@ -12,14 +12,22 @@
 #include "../src/MCUFRIEND_kbv/MCUFRIEND_kbv.h"
 
 class TFTHelper {
+
+protected:
+    static TFTHelper * pinstance_;
+    TFTHelper();
+
 public:
-	TFTHelper();
+	TFTHelper(TFTHelper &other) = delete;
+	static TFTHelper *GetInstance();
+	void operator=(const TFTHelper &) = delete;
+
 	void showbgd(int x, int y, const uint8_t *bmp, int w, int h, uint16_t color, uint16_t bg);
 	void connect(void);
 	MCUFRIEND_kbv tft;
 
 private:
-	void init();
+    void init();
 
 };
 

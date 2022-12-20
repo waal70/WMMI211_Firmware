@@ -13,6 +13,7 @@
 EnvironmentView::EnvironmentView(Environment* model, TFTHelper* screen) {
 	this->model = model;
 	this->myScreen = screen;
+	Serial.println("EnvironmentView instantiated");
 }
 
 void EnvironmentView::setModel(Environment* model) {
@@ -28,7 +29,7 @@ void EnvironmentView::printValues() {
 	//Print values, deleting those previously written by using a black background color
 	//Temperature
 	myScreen->tft.setCursor(140, 125);
-	int CTEMP = model->getTemperature(); //Current TEMPerature
+	float CTEMP = model->getTemperature(); //Current TEMPerature
 	if (CTEMP < 0) {
 		myScreen->tft.setTextColor(GREY, BLACK);
 	} else if (CTEMP <= 18) {
@@ -64,7 +65,7 @@ void EnvironmentView::printValues() {
 
 	//Humidity
 	myScreen->tft.setCursor(140, 200);
-	int CHUM = model->getHumidity(); //Current HUMidity
+	float CHUM = model->getHumidity(); //Current HUMidity
 	if (CHUM < 30) {
 		myScreen->tft.setTextColor(RED, BLACK);
 	} else if ((CHUM >= 30) && (CHUM <= 50)) {
@@ -91,7 +92,6 @@ void EnvironmentView::printValues() {
 
 void EnvironmentView::RenderAll() {
 	//print icons that are relevant for this sensor
-
 	myScreen->showbgd(127, 72, temperature_65x50, 65, 50, WHITE, BLACK);
 	myScreen->showbgd(214, 72, pressure_65x50, 65, 50, WHITE, BLACK);
 	myScreen->showbgd(127, 148, humidity_65x50, 65, 50, WHITE, BLACK);

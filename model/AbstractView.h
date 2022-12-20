@@ -13,10 +13,10 @@
 class AbstractView {
 public:
 	AbstractView();
-	void setTFTHelper(const TFTHelper &myScreen);
+	//void setTFTHelper(const TFTHelper &myScreen);
 
 private:
-	TFTHelper myScreen;
+	//TFTHelper myScreen;
 
 };
 

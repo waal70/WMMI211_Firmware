@@ -13,10 +13,24 @@
 
 TFTHelper::TFTHelper() {
 	//in construction, make sure all is populated...
-	Serial.println("***LCD screen feedback***");
 	//tft = &MCUFRIEND_kbv();
-
+	init();
 }
+
+TFTHelper* TFTHelper::pinstance_=nullptr;;
+
+TFTHelper *TFTHelper::GetInstance()
+{
+    /**
+     * This is a safer way to create an instance. instance = new Singleton is
+     * dangeruous in case two instance threads wants to access at the same time
+     */
+    if(pinstance_==nullptr){
+        pinstance_ = new TFTHelper();
+    }
+    return pinstance_;
+}
+
 void TFTHelper::init() {
 	Serial.println("***LCD screen feedback***");
 	Serial.println(F("TFT LCD test"));
@@ -77,6 +91,7 @@ void TFTHelper::connect() {
 }
 void TFTHelper::showbgd(int x, int y, const uint8_t *bmp, int w, int h,
 		uint16_t color, uint16_t bg) {
+	//Serial.println("TFTHelper::showbgd");
 	uint8_t pad = 7;
 	int yy, xx;
 	uint8_t first = 1, RVS = pad & 0x80;

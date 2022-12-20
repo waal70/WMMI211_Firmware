@@ -15,6 +15,7 @@ RealTimeClock::RealTimeClock() :
 
 	Serial.println("***DS1302 Sensor feedback***");
 	isConnected = false;
+	connect();
 }
 
 void RealTimeClock::connect() {

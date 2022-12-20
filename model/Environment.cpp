@@ -3,6 +3,9 @@
 #include "Sensors.h"
 #include "../config.h"
 
+//forward method declaration:
+void Environment::connect();
+
 Environment::Environment(){ //default constructor
 	//First, make sure we instantiate a sensor BME280
 	Serial.println("***BME280 Sensor feedback***");
@@ -16,7 +19,7 @@ Environment::Environment(){ //default constructor
 	HumidityCompensation = HUMI_comp;
 	ReferencePressure = 0;
 	isConnected = false;
-
+	connect();
 }
 
 void Environment::initialize() {
@@ -54,26 +57,35 @@ void Environment::connect()
 	Humidity += getHumidityCompensation();
 	Temperature = myBME280.readTempC();
 	Temperature += getTemperatureCompensation();
+
+	//NOTE: Returns pressure in Pa. Divide by 100 to get hPa (=mbar)
 	AmbientPressure = myBME280.readFloatPressure();
+	AmbientPressure = AmbientPressure / 100;
 
 }
 
+//returns Humidity with three decimals: 46.333 %RH
 float Environment::getHumidity() {
+	connect();
 	return Humidity;
 
 }
 
 float Environment::getAmbientPressure() {
+	//Update all sensor values:
+	connect();
 	return AmbientPressure;
 
 }
 
 float Environment::getAltitude() {
+	connect();
 	return Altitude;
 
 }
 
 float Environment::getTemperature() {
+	connect();
 	return Temperature;
 
 }

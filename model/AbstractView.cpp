@@ -9,9 +9,9 @@
 #include "../config.h"
 
 AbstractView::AbstractView() {
-	Serial.println("AbstractView instantiated");
+	//Serial.println("AbstractView instantiated");
 
 }
-void AbstractView::setTFTHelper(const TFTHelper &myScreen){
-	this->myScreen = myScreen;
-}
+//void AbstractView::setTFTHelper(const TFTHelper &myScreen){
+//	this->myScreen = myScreen;
+//}

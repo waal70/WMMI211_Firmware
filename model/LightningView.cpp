@@ -12,6 +12,7 @@
 LightningView::LightningView(Lightning* model, TFTHelper* screen) {
 	this->model = model;
 	this->myScreen = screen;
+	Serial.println("LightningView instantiated");
 }
 void LightningView::setModel(Lightning* model) {
 	this->model = model;
@@ -20,15 +21,11 @@ void LightningView::setModel(Lightning* model) {
 void LightningView::printValues() {
 	//print last detection time lightning sensor
 	myScreen->tft.setCursor(210, 200);
-	Serial.println("Call to LastDetectionTime yielded: ");
-	Serial.println(model->getLastDetectionTime());
-	Serial.println();
 	myScreen->tft.print(model->getLastDetectionTime());
 }
 void LightningView::RenderAll() {
 	//print icons
-	myScreen->showbgd(40, 72, eCO2_65x50, 65, 50, WHITE, BLACK);
-	myScreen->showbgd(40, 148, tvoc_65x50, 65, 50, WHITE, BLACK);
+	myScreen->showbgd(214, 148, lightning_65x50, 65, 50, WHITE, BLACK);
 	//print values from sensors
 	printValues();
 }

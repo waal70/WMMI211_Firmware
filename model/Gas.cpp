@@ -2,6 +2,9 @@
 #include "../config.h"
 #include "Sensors.h"
 
+//forward method declaration:
+void Gas::connect();
+
 Gas::Gas() : myCCS811(CCS811_ADDR) //CCS811 creation requires this address
 {
 	Serial.println("***CCS811 Sensor feedback***");
@@ -10,6 +13,7 @@ Gas::Gas() : myCCS811(CCS811_ADDR) //CCS811 creation requires this address
 	ReferenceTemperature = 0;
 	ReferenceHumidity = 0;
 	isConnected = false;
+	connect();
 }
 
 void Gas::initialize() {

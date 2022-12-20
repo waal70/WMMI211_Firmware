@@ -11,6 +11,7 @@
 GasView::GasView(Gas* model, TFTHelper* screen) {
 	this->model = model;
 	this->myScreen = screen;
+	Serial.println("GasView instantiated");
 }
 void GasView::setModel(Gas* model) {
 	this->model = model;
