@@ -13,9 +13,8 @@
 
 class GasView: public AbstractView {
 public:
-	GasView();
-	GasView(const Gas &model);
-	void setModel(const Gas &model);
+	GasView(Gas* model, TFTHelper* screen);
+	void setModel(Gas* model);
 	//void printValues();
 	void Render();
 	void Render(int detailRequired);
@@ -23,10 +22,10 @@ public:
 		GAS_ALL = 0, GAS_CO2 = 1, GAS_TVOC = 2,
 	};
 private:
-	Gas model;	//holds the sensor model
+	Gas* model;	//holds the sensor model
 	void printValues();
 	void RenderAll();						//renders the summary on main screen
-	TFTHelper myScreen;
+	TFTHelper* myScreen;
 };
 
 #endif /* MODEL_GASVIEW_H_ */

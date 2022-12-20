@@ -13,10 +13,9 @@
 
 class EnvironmentView: public AbstractView {
 public:
-	EnvironmentView();
-	EnvironmentView(const Environment &model);
+	EnvironmentView(Environment* model, TFTHelper* screen);
 
-	void setModel(const Environment &model);
+	void setModel(Environment* model);
 
 	void Render();
 	void Render(int detailRequired);
@@ -28,10 +27,10 @@ public:
 		ENV_TEMPERATURE = 8,
 	};
 private:
-	Environment model;	//holds the sensor model
+	Environment* model;	//holds the sensor model
 	void printValues();
 	void RenderAll();						//renders the summary on main screen
-	TFTHelper myScreen;
+	TFTHelper* myScreen;
 
 };
 

@@ -6,7 +6,8 @@
 #include "model/Environment.h"						// My code to wrap the BME280
 #include "model/Gas.h"								// My code to wrap the CCS811
 #include "model/Lightning.h"						// My code to wrap the AS3935
-#include "model/RealTimeClock.h"					//My code to wrap the VMA301
+#include "model/RealTimeClock.h"					// My code to wrap the VMA301
+#include "model/TFTHelper.h"
 /***************************************/
 /* ----------- SETUP CODE ------------ */
 /***************************************/
@@ -50,17 +51,23 @@ void setup(void)
     EEPROM.write(firstBoot_EEPROMaddr, false);    //set firstboot on false, this will not be run again
   }
 
-  /* --- CCS811 sensor feedback --- */
+  //Init a screen
+  TFTHelper myScreen;
+
+  //CCS811 sensor:
   Gas myGas;
   myGas.connect();
+  GasView myGasView(&myGas,&myScreen);
 
   //AS3935 sensor:
   Lightning myLightning;
   myLightning.connect();
+  LightningView myLightningView(&myLightning,&myScreen);
 
   //BME280 sensor
   Environment myEnv;
   myEnv.connect();
+  EnvironmentView myEnvView(&myEnv, &myScreen);
 
   //read value from EEPROM if Temp is in °F or °C and lightning units are in km or mi
   MetricON = EEPROM.read(MetricON_EEPROMaddr);  //read metric or imperial state from memory. If not set, this will be true, since all EEPROM addresses are 0xFF by default
@@ -121,12 +128,14 @@ void setup(void)
   myRTC.connect();
   myRTC.getDayOfWeek();
   
-  
   /* --- end of boot, wait 2 secs & set interrupt state, then show info screen --- */
   delay(2000);
-  AS3935IrqTriggered = 0;   //set the interrupt state of the AS3935 sensor to 0 (fix data input on boot)
+  myLightning.isTriggered = false;
+  slideShowPlaying = 0;   //we always start without slide show
+  //create one controller
+  EarthListenerController elc(&myEnv, &myEnvView, &myGas, &myGasView, &myLightning, &myLightningView, &myRTC);
+  elc.showSummary();
   Serial.println("***End of setup, starting loop***");
   Serial.println();
-  slideShowPlaying = 0;   //we always start without slide show
-  showScreen(1);    //show info screen
+
 }

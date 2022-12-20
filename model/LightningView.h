@@ -13,9 +13,8 @@
 
 class LightningView: public AbstractView {
 public:
-	LightningView();
-	LightningView(const Lightning &model);
-	void setModel(const Lightning &model);
+	LightningView(Lightning* model, TFTHelper* screen);
+	void setModel(Lightning* model);
 	//void printValues();
 	void Render();
 	void Render(int detailRequired);
@@ -23,10 +22,10 @@ public:
 		LIGHTNING_ALL = 0, LIGHTNING_DIST = 1, LIGHTNING_INTENS = 2,
 	};
 private:
-	Lightning model;	//holds the sensor model
+	Lightning* model;	//holds the sensor model
 	void printValues();
 	void RenderAll();						//renders the summary on main screen
-	TFTHelper myScreen;
+	TFTHelper* myScreen;
 };
 
 #endif /* MODEL_LIGHTNINGVIEW_H_ */

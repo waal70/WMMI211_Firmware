@@ -19,8 +19,12 @@
 #include "src\TouchScreen\TouchScreen.h"               	  // TouchScreen library by Adafruit
 #include "src\ds1302\DS1302.h"                            // DS1302 RTC library
 
+#include "model/EarthListenerController.h"
+
 inline int CO2;
 inline int TVOC;
+
+//inline auto elc;
 
 /* --- BME280 air sensor --- */
 inline float HUMIDITY_BME280;
