@@ -108,10 +108,7 @@ inline int loggingInterval = 10;   //interval to log the values to the SD card i
 /* --- RTC real time clock VMA301 module --- */
 //VM301 module, set the appropriate digital I/O pin connections for the DS1302 chip
 //See the DS1302 datasheet: http://datasheets.maximintegrated.com/en/ds/DS1302.pdf
-const int kCePin   = 35;  // Chip Enable    RST pin on VMA301
-const int kIoPin   = 37;  // Input/Output   DAT pin on VMA301
-const int kSclkPin = 39;  // Serial Clock   CLK pin on VMA301
-inline DS1302 rtc(kCePin, kIoPin, kSclkPin);     // Create a DS1302 object
+//inline DS1302 rtc(kCePin, kIoPin, kSclkPin);     // Create a DS1302 object
 inline boolean RTCpresent = false;    //boolean to check if a RTC is present (will be updated in boot loop)
 inline int shownMinute;              //var to store the last shown minute on screen
 

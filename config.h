@@ -47,6 +47,10 @@
 #define TEMP_comp  -3.3   //the EarthListener is warmed up from the TFT screen hence reporting a higher temperature. This compensation corrects this.
 #define HUMI_comp 17     //same for the humidity. Values are experimental and should be changed according to your findings.
 //
+/* --- RTC VMA301 --- */
+#define kCePin    35  // Chip Enable    RST pin on VMA301
+#define kIoPin    37  // Input/Output   DAT pin on VMA301
+#define kSclkPin  39  // Serial Clock   CLK pin on VMA301
 /* --- DIGITAL outputs --- */
 #define GreenOutPin   30
 #define YellowOutPin  31

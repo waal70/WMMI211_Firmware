@@ -5,7 +5,8 @@
 
 #include "model/Environment.h"						// My code to wrap the BME280
 #include "model/Gas.h"								// My code to wrap the CCS811
-#include "model/Lightning.h"							// My code to wrap the AS3935
+#include "model/Lightning.h"						// My code to wrap the AS3935
+#include "model/RealTimeClock.h"					//My code to wrap the VMA301
 /***************************************/
 /* ----------- SETUP CODE ------------ */
 /***************************************/
@@ -24,60 +25,6 @@ void setup(void)
   Serial.println("----------------------------------");
   Serial.println();
 
-
-  /* --- LCD screen feedback --- */
-  Serial.println("***LCD screen feedback***");
-  Serial.println(F("TFT LCD test"));
-  #ifdef USE_ADAFRUIT_SHIELD_PINOUT
-    Serial.println(F("Using Adafruit 2.4\" TFT Arduino Shield Pinout"));
-  #else
-    Serial.println(F("Using Adafruit 2.4\" TFT Breakout Board Pinout"));
-  #endif
-    Serial.print("TFT size is "); Serial.print(tft.width()); Serial.print("x"); Serial.println(tft.height());
-  tft.reset();
-
-  uint16_t identifier = tft.readID();
-  if (identifier == 0x9325) {
-    Serial.println(F("Found ILI9325 LCD driver"));
-  } else if (identifier == 0x9328) {
-    Serial.println(F("Found ILI9328 LCD driver"));
-  } else if (identifier == 0x4535) {
-    Serial.println(F("Found LGDP4535 LCD driver"));
-  } else if (identifier == 0x7575) {
-    Serial.println(F("Found HX8347G LCD driver"));
-  } else if (identifier == 0x9341) {
-    Serial.println(F("Found ILI9341 LCD driver"));
-  } else if (identifier == 0x7783) {
-    Serial.println(F("Found ST7781 LCD driver"));
-  } else if (identifier == 0x8230) {
-    Serial.println(F("Found UC8230 LCD driver"));
-  }
-  else if (identifier == 0x8357) {
-    Serial.println(F("Found HX8357D LCD driver"));
-  } else if (identifier == 0x0101)
-  {
-    identifier = 0x9341;
-    Serial.println(F("Found 0x9341 LCD driver"));
-  } else
-  {
-    Serial.print(F("Unknown LCD driver chip: "));
-    Serial.println(identifier, HEX);
-    Serial.println(F("If using the Adafruit 2.8\" TFT Arduino shield, the line:"));
-    Serial.println(F("  #define USE_ADAFRUIT_SHIELD_PINOUT"));
-    Serial.println(F("should appear in the library header (Adafruit_TFT.h)."));
-    Serial.println(F("If using the breakout board, it should NOT be #defined!"));
-    Serial.println(F("Also if using the breakout, double-check that all wiring"));
-    Serial.println(F("matches the tutorial."));
-    identifier = 0x9341;
-  }
-
-  tft.begin(identifier);
-
-  tft.fillScreen(BLACK);
-  tft.setRotation(1);
-  pinMode(touchPin, OUTPUT);  //pin to control reading of touchscreen
-
-
   /* --- RGB LED pins --- */
   if(LEDenabled)  //set pins for RGB LED & set everything low => black, but only if LEDenabled = true
   {
@@ -86,19 +33,10 @@ void setup(void)
     pinMode(LEDr, OUTPUT);     digitalWrite(LEDr, LOW);
     pinMode(LEDb, OUTPUT);     digitalWrite(LEDb, LOW);
   }
-
-
   /* --- DIGITAL outputs --- */
   pinMode(GreenOutPin, OUTPUT);     digitalWrite(GreenOutPin, LOW);
   pinMode(YellowOutPin, OUTPUT);    digitalWrite(YellowOutPin, LOW);
   pinMode(RedOutPin, OUTPUT);       digitalWrite(RedOutPin, LOW);
-  
-
-  /* --- Write LCD fields to show boot info --- */
-  Serial.println("Show EarthListener boot animation");
-  Serial.println();
-  showScreen(0);
-
 
   /* --- Check first boot & if true, set values to default settings --- */
   if(EEPROM.read(firstBoot_EEPROMaddr))
@@ -112,67 +50,23 @@ void setup(void)
     EEPROM.write(firstBoot_EEPROMaddr, false);    //set firstboot on false, this will not be run again
   }
 
-
   /* --- CCS811 sensor feedback --- */
   Gas myGas;
   myGas.connect();
-  Serial.println();
-  Serial.println();
 
-
-  /* --- AS3935 sensor feedback --- */
-  tft.setCursor(15, 135);
-  tft.setTextColor(WHITE); 
-  tft.setTextSize(2);
-  tft.print("AS3935 status: ");
-  
+  //AS3935 sensor:
   Lightning myLightning;
   myLightning.connect();
 
-  if(myLightning.isConnected)
-  {
-      tft.setTextColor(GREEN); 
-      tft.print("DETECTED");
-      Serial.println("Setup AS3935 sensor done.");
-      Serial.println();  
-  }
-  else
-  {
-      Serial.println("Lightning sensor did not start up!");
-      Serial.println(); 
-      tft.setTextColor(RED); 
-      tft.print("ERROR");
-      delay(1000);
-  }
-
-  //////////BME280
+  //BME280 sensor
   Environment myEnv;
-  //myEnv = Environment();
   myEnv.connect();
-  
-  tft.setCursor(15, 165);
-  tft.setTextColor(WHITE); 
-  tft.setTextSize(2);
-  tft.print("BME280 status: ");
-  
-  if(!myEnv.isConnected)
-  {
-    tft.setTextColor(RED); 
-    tft.print("NOT FOUND");
-  }
-  else
-  {
-    tft.setTextColor(GREEN); 
-    tft.print("DETECTED");
-  }
+
   //read value from EEPROM if Temp is in °F or °C and lightning units are in km or mi
   MetricON = EEPROM.read(MetricON_EEPROMaddr);  //read metric or imperial state from memory. If not set, this will be true, since all EEPROM addresses are 0xFF by default
-  Serial.println();
 
   /* --- set buzzer pin & read value from EEPROM --- */
   BuzzerEnabled = EEPROM.read(Buzzer_EEPROMaddr);
-  //Serial.print("BuzzerEnabled = "); Serial.println(BuzzerEnabled);
-  //BuzzerEnabled = 0;
   pinMode(BuzzerPin, OUTPUT);
   digitalWrite(BuzzerPin, LOW);
 
@@ -183,10 +77,6 @@ void setup(void)
   // make sure that the default chip select pin is set to
   // output, even if you don't use it:
   pinMode(SS, OUTPUT);
-  tft.setCursor(15, 195);
-  tft.setTextColor(WHITE); 
-  tft.setTextSize(2);
-  tft.print("SD card: ");
   // see if the card is present and can be initialized:
   //TODO: ignore SD for now
   /*if (SD.begin(chipSelect))
@@ -213,8 +103,6 @@ void setup(void)
   }
   Serial.println();
 */
-
-
   /* -- init the RTC module (RUN ONCE AFTER INSTALLING A RTC MODULE, THEN COMMENT OUT THIS BLOCK) */
   // Init a new chip by turning off write protection and clearing the clock halt flag. 
   // These methods needn't always be called. See the DS1302 datasheet for details.
@@ -229,24 +117,9 @@ void setup(void)
   
 
   /* --- check if RTC is present --- */
-  Time t = rtc.time();
-  if (t.mon == 165)    //when there is no clock, this value will be returend as 165
-  {
-    RTCpresent = false; 
-    Serial.println("No Real Time Clock available! Using seconds since boot for logging.");
-  }
-  else if(t.yr == 2000) //when there is an error with the RTC, year will be set on 2000
-  {
-    RTCpresent = false; 
-    Serial.println("Real Time Clock error! Using seconds since boot for logging.");
-  }
-  else
-  {
-    RTCpresent = true;
-    Serial.println("Real Time Clock available! Current time:");
-    //Serial.println((__FlashStringHelper*)returnTime(t));
-  }
-  Serial.println();
+  RealTimeClock myRTC;
+  myRTC.connect();
+  myRTC.getDayOfWeek();
   
   
   /* --- end of boot, wait 2 secs & set interrupt state, then show info screen --- */

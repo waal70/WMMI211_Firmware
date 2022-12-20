@@ -65,59 +65,59 @@ void loop(void)
         // make a string for assembling the data to log on the SD card & add the current time:
         String dataString = "";
         //check if RTC is present, if it is, use real time, otherwise use running time since boot
-        if(RTCpresent)
-        {
-          Time timeNow = rtc.time();
-          //we can use this value to show time info on the screen, but will only update this if the minute has been changed
-          if(timeNow.min == shownMinute)
-          {
-            //do nothing
-          }
-          else
-          {
-           tft.setFont();  //standard system font
-           tft.setTextSize(1); tft.setTextColor(GREYY,BLACK);
-           //print day & date
-           tft.setCursor(20, 25);
-
-           //String myDay = dayAsString(timeNow.day);
-
-           tft.print(dayAsString(timeNow.day));
-           tft.print("  ");
-           tft.setCursor(20, 40);
-           if(MetricON)
-           {
-              if(timeNow.date <10){tft.print("0");}
-              tft.print(timeNow.date); tft.print("-");
-              if(timeNow.mon <10){tft.print("0");}
-              tft.print(timeNow.mon); tft.print("-"); tft.print(timeNow.yr);
-           }
-           else
-           {  
-              tft.print(timeNow.yr); tft.print("/"); 
-              if(timeNow.mon <10){tft.print("0");}
-              tft.print(timeNow.mon); tft.print("/"); 
-              if(timeNow.date <10){tft.print("0");}
-              tft.print(timeNow.date);
-           }
-           //print hour & minutes
-           tft.setTextSize(2);
-           tft.setCursor(240, 30);
-           if(timeNow.hr <10){tft.print("0");}
-           tft.print(timeNow.hr); tft.print(":"); 
-           if(timeNow.min <10){tft.print("0");}
-           tft.print(timeNow.min);
-          
-           shownMinute = timeNow.min;
-          }
-          dataString = returnTime(timeNow);
-        }
-        else
-        {
-          char buf[17];
-          sprintf(buf,"%02d %02d:%02d:%02d",runDays,runHours,runMinutes,runSeconds);
-          dataString = buf;
-        }
+//        if(RTCpresent)
+//        {
+//          Time timeNow = .time();
+//          //we can use this value to show time info on the screen, but will only update this if the minute has been changed
+//          if(timeNow.min == shownMinute)
+//          {
+//            //do nothing
+//          }
+//          else
+//          {
+//           tft.setFont();  //standard system font
+//           tft.setTextSize(1); tft.setTextColor(GREYY,BLACK);
+//           //print day & date
+//           tft.setCursor(20, 25);
+//
+//           //String myDay = dayAsString(timeNow.day);
+//
+//           tft.print(dayAsString(timeNow.day));
+//           tft.print("  ");
+//           tft.setCursor(20, 40);
+//           if(MetricON)
+//           {
+//              if(timeNow.date <10){tft.print("0");}
+//              tft.print(timeNow.date); tft.print("-");
+//              if(timeNow.mon <10){tft.print("0");}
+//              tft.print(timeNow.mon); tft.print("-"); tft.print(timeNow.yr);
+//           }
+//           else
+//           {
+//              tft.print(timeNow.yr); tft.print("/");
+//              if(timeNow.mon <10){tft.print("0");}
+//              tft.print(timeNow.mon); tft.print("/");
+//              if(timeNow.date <10){tft.print("0");}
+//              tft.print(timeNow.date);
+//           }
+//           //print hour & minutes
+//           tft.setTextSize(2);
+//           tft.setCursor(240, 30);
+//           if(timeNow.hr <10){tft.print("0");}
+//           tft.print(timeNow.hr); tft.print(":");
+//           if(timeNow.min <10){tft.print("0");}
+//           tft.print(timeNow.min);
+//
+//           shownMinute = timeNow.min;
+//          }
+//          dataString = returnTime(timeNow);
+//        }
+//        else
+//        {
+//          char buf[17];
+//          sprintf(buf,"%02d %02d:%02d:%02d",runDays,runHours,runMinutes,runSeconds);
+//          dataString = buf;
+//        }
         dataString += ",";
 
         //calculate minutes between current time & time when AS3935sensor was triggered
