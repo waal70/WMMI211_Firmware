@@ -28,7 +28,7 @@ public:
 
 	void connect();
 
-	String getLastDetectionTime();
+	char * getLastDetectionTime();
 
 	bool isConnected;
 

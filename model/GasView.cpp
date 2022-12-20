@@ -1,5 +1,4 @@
-/*
- * GasView.cpp
+/* GasView.cpp
  *
  *  Created on: 20 dec. 2022
  *      Author: awaal

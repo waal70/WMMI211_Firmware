@@ -12,10 +12,12 @@
 #include "../src/MCUFRIEND_kbv/MCUFRIEND_kbv.h"
 
 TFTHelper::TFTHelper() {
-	//in constrcution, make sure all is populated...
+	//in construction, make sure all is populated...
+	Serial.println("***LCD screen feedback***");
+	//tft = &MCUFRIEND_kbv();
 
 }
-void TFTHelper::init(){
+void TFTHelper::init() {
 	Serial.println("***LCD screen feedback***");
 	Serial.println(F("TFT LCD test"));
 #ifdef USE_ADAFRUIT_SHIELD_PINOUT
@@ -65,35 +67,39 @@ void TFTHelper::init(){
 		identifier = 0x9341;
 	}
 	tft.begin(identifier);
+	tft.fillScreen(BLACK);
 	tft.setRotation(1);
 	pinMode(touchPin, OUTPUT);
 
 }
-void TFTHelper::showbgd(int x, int y, const uint8_t *bmp, int w, int h, uint16_t color, uint16_t bg)
-{
-    uint8_t pad = 7;
-    int yy, xx;
-    uint8_t first = 1, RVS = pad & 0x80;
-    uint16_t pixel;
-    pad &= 31;
-    uint16_t wid = (w + pad) & ~pad;                    //bits per row
-    tft.setAddrWindow(x, y, x + w - 1, y + h - 1); //
-    for (yy = 0; yy < h; yy++) {
-        uint32_t ofs = (RVS ? (h - yy - 1) : yy) * wid; //bit offset
-        const uint8_t *p = bmp + (ofs >> 3);            //flash address
-        uint8_t mask = 0x80 >> (ofs & 7);               //bit mask
-        uint8_t c = pgm_read_byte(p++);
-        for (xx = 0; xx < w; xx++) {
-            if (mask == 0) {
-                c = pgm_read_byte(p++);
-                mask = 0x80;
-            }
-            pixel = (c & mask) ? color : bg;
-            tft.pushColors(&pixel, 1, first);
-            first = 0;
-            mask >>= 1;
-        }
-    }
-    tft.setAddrWindow(0, 0, tft.width() - 1, tft.height() - 1);
+void TFTHelper::connect() {
+	init();
+}
+void TFTHelper::showbgd(int x, int y, const uint8_t *bmp, int w, int h,
+		uint16_t color, uint16_t bg) {
+	uint8_t pad = 7;
+	int yy, xx;
+	uint8_t first = 1, RVS = pad & 0x80;
+	uint16_t pixel;
+	pad &= 31;
+	uint16_t wid = (w + pad) & ~pad;                    //bits per row
+	tft.setAddrWindow(x, y, x + w - 1, y + h - 1); //
+	for (yy = 0; yy < h; yy++) {
+		uint32_t ofs = (RVS ? (h - yy - 1) : yy) * wid; //bit offset
+		const uint8_t *p = bmp + (ofs >> 3);            //flash address
+		uint8_t mask = 0x80 >> (ofs & 7);               //bit mask
+		uint8_t c = pgm_read_byte(p++);
+		for (xx = 0; xx < w; xx++) {
+			if (mask == 0) {
+				c = pgm_read_byte(p++);
+				mask = 0x80;
+			}
+			pixel = (c & mask) ? color : bg;
+			tft.pushColors(&pixel, 1, first);
+			first = 0;
+			mask >>= 1;
+		}
+	}
+	tft.setAddrWindow(0, 0, tft.width() - 1, tft.height() - 1);
 }
 

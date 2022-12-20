@@ -53,6 +53,7 @@ void setup(void)
 
   //Init a screen
   TFTHelper myScreen;
+  myScreen.connect();
 
   //CCS811 sensor:
   Gas myGas;

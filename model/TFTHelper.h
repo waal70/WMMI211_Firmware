@@ -15,10 +15,12 @@ class TFTHelper {
 public:
 	TFTHelper();
 	void showbgd(int x, int y, const uint8_t *bmp, int w, int h, uint16_t color, uint16_t bg);
+	void connect(void);
 	MCUFRIEND_kbv tft;
-private:
 
+private:
 	void init();
+
 };
 
 #endif /* MODEL_TFTHELPER_H_ */

@@ -69,7 +69,7 @@ void Lightning::connect () {
 			//now populate the values
 }
 
-String Lightning::getLastDetectionTime()
+char * Lightning::getLastDetectionTime()
 {
 	if (!isConnected) return "   error    ";
 	if (lastTriggered == 0) return "    none    ";
