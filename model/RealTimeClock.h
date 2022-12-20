@@ -8,7 +8,7 @@ class RealTimeClock: public AbstractModel {
 
 private:
 	void initialize();
-	char * dayAsString(const Time::Day day);
+	char * dayAsString(Time t);
 	DS1302 myRTC;
 public:
 	RealTimeClock();

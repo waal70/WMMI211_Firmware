@@ -24,6 +24,7 @@ Lightning::~Lightning(){
 	detachInterrupt(digitalPinToInterrupt(AS3935_IRQPIN));
 }
 static void Lightning::interruptFunction () {
+	Serial.println("*********INTERRUPT DETECTED******************");
 	isTriggered = true;
 	lastTriggered = millis();
 }
@@ -48,11 +49,13 @@ void Lightning::initialize() {
 		   myAS3935.spikeRejection(SpikeRejection);
 		   myAS3935.lightningThreshold(LightningThreshold);
 		   myAS3935.clearStatistics(true);
-
-		   Serial.println("AS3935 sensor has been set!");
-
 		   pinMode(AS3935_IRQPIN, INPUT);   // See http://arduino.cc/en/Tutorial/DigitalPins
 		   attachInterrupt(digitalPinToInterrupt(AS3935_IRQPIN), interruptFunction, CHANGE);
+		   delay(50);
+		   Serial.println("AS3935 sensor has been set!");
+		   //clear the interrupt that occurs on attaching the interrupt function:
+		   lastTriggered = 0;
+		   isTriggered = false;
 	   }
 
 }

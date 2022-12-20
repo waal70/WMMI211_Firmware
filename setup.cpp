@@ -79,8 +79,8 @@ void setup(void)
 
 
   /* --- SD card feedback --- */
-  Serial.println("***SD card feedback***");
-  Serial.print("Initializing...");
+  //Serial.println("***SD card feedback***");
+  //Serial.print("Initializing...");
   // make sure that the default chip select pin is set to
   // output, even if you don't use it:
   pinMode(SS, OUTPUT);
@@ -126,7 +126,7 @@ void setup(void)
   /* --- check if RTC is present --- */
   RealTimeClock myRTC;
   myRTC.connect();
-  myRTC.getDayOfWeek();
+  //myRTC.getDayOfWeek();
   
   /* --- end of boot, wait 2 secs & set interrupt state, then show info screen --- */
   delay(2000);
