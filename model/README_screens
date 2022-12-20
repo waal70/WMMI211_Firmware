@@ -1,0 +1,22 @@
+Screens for the Earth Listener:
+
+
+Splash screen - displays Earth Listener logo and cycles lights
+Boot screen - displays status of sensors
+Config screen - displays settings
+Overview screen: displays the summary of all sensors;
+From top left to top right, to bottom left to bottom right:
+eCO2, Temperature, Pressure
+TVOC, Humidity, Lightning
+
+Design decision:
+One sensor has one View class.
+As there also is an overview screen - Render will take an argument as to which value to present
+When this value is 0 or non-existant: assume you want the overview.
+This instead of a class per screen: it would mean two classes have knowledge of icons - which I'd rather
+keep separated. Now, only the Environment class knows about the relevant icons.
+
+Screen components that are more or less generic:
+Crumb-component: indicates how many screens there are + currently selected
+Menu-component: play button for slideshow and cog-wheel for settings
+

@@ -28,9 +28,13 @@ public:
 
 	void connect();
 
+	String getLastDetectionTime();
+
 	bool isConnected;
 
 	static bool isTriggered;
+
+	static unsigned long lastTriggered;
 
 	static void interruptFunction(void);
 

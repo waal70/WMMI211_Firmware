@@ -4,6 +4,7 @@
 #include "Sensors.h"
 
 bool Lightning::isTriggered = false; //needed for static variables
+unsigned long Lightning::lastTriggered = 0;
 
 Lightning::Lightning() : myAS3935(AS3935_ADD)  {
 	Serial.println("***AS3935 Sensor feedback***");
@@ -24,6 +25,7 @@ Lightning::~Lightning(){
 }
 static void Lightning::interruptFunction () {
 	isTriggered = true;
+	lastTriggered = millis();
 }
 
 void Lightning::initialize() {
@@ -62,6 +64,39 @@ void Lightning::connect () {
 			}
 			//assume we're connected now
 			//now populate the values
+}
+
+String Lightning::getLastDetectionTime()
+{
+	if (!isConnected) return "   error    ";
+	if (lastTriggered == 0) return "    none    ";
+	//millis() is in milliseconds, since the program started.
+	//So to determine how long ago it was, I need to do this calculation
+	//Which then gives me number of milliseconds.
+	// Divide by 60000 to get minutes
+	char returnbuffer[15]; //allocate the return buffer
+	unsigned long elapsedSinceTrigger = millis() - lastTriggered;
+	elapsedSinceTrigger = elapsedSinceTrigger/60000;
+	if (elapsedSinceTrigger < 1) {
+		sprintf(returnbuffer, "< 1 min ago ");
+		return returnbuffer;
+	}
+	if (elapsedSinceTrigger > 60) {
+		if (elapsedSinceTrigger >= 1440) {
+			sprintf(returnbuffer, "> 1 day ago");
+			return returnbuffer; //1440 minutes is 24 hours
+		}
+		if (elapsedSinceTrigger < 1440) {
+			sprintf(returnbuffer, "%02d hours ago", elapsedSinceTrigger/60);
+			return returnbuffer;
+		}
+	}
+	else {
+		sprintf(returnbuffer, "%02d minutes ago", elapsedSinceTrigger);
+		return returnbuffer;
+	}
+	//if I'm here, something did not work:
+	return " unknown ";
 }
 
 void Lightning::clearStatistics() {
