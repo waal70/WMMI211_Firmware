@@ -19,6 +19,7 @@ public:
 
 	void Render();
 	void Render(int detailRequired);
+	void clear();
 	enum DETAIL {
 		ENV_ALL = 0,
 		ENV_HUMIDITY = 1,
@@ -30,6 +31,7 @@ private:
 	Environment* model;	//holds the sensor model
 	void printValues();
 	void RenderAll();						//renders the summary on main screen
+	void RenderTemperature();
 	TFTHelper* myScreen;
 
 };

@@ -23,11 +23,11 @@
    EEPROM
    SPI
    Wire
+   MCUFRIEND_kbv
+   Adafruit_TouchScreen
  Required libraries (in /src folder):
    ds1302
-   MCUFRIEND_kbv
    SparkFun_AS3935
    SparkFun_BME280
    SparkFun_CCS811
-   TouchScreen
-******************************************************************************/
+   ******************************************************************************/

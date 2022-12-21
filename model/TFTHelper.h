@@ -8,7 +8,7 @@
 #ifndef MODEL_TFTHELPER_H_
 #define MODEL_TFTHELPER_H_
 
-#include "../src/MCUFRIEND_kbv/MCUFRIEND_kbv.h"
+#include <MCUFRIEND_kbv.h>
 
 /**
  * Class that encapsulates the MCUFRIEND_kbv TFT handling

@@ -3,8 +3,7 @@
 
 void getTimeSinceBoot();
 int freeMemory();
-
-
+bool touchedMe();
 
 //#include <stdint.h>
 //#include "src\ds1302\DS1302.h"

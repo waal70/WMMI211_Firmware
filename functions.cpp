@@ -1,14 +1,5 @@
 #include "functions.h"
-
-// TODO: check if still needed, as we are now lazily instantiating
-struct WaitForSerial {
-  WaitForSerial() {
-    Serial.begin(9600);
-    while (!Serial);
-  }
-};
-WaitForSerial WFS;
-
+#include <TouchScreen.h>
 
 TFTHelper *myScreen = NULL;
 Gas *myGas = NULL;
@@ -21,11 +12,12 @@ LightningView *myLightningView = NULL;
 EnvironmentView *myEnvView = NULL;
 MenuView *myMenuView = NULL;
 
+
+
 EarthListenerController *elc = NULL;
 
 
 unsigned long touchedTime = 0;     //time when last touchscreen interaction occurred;
-bool touchedMe = false;
 unsigned long allSeconds = 0;
 unsigned long runDays = 0;
 unsigned long secsRemaining = 0;
@@ -40,7 +32,7 @@ int secondCounter = 0;
 // For better pressure precision, we need to know the resistance
 // between X+ and X- Use any multimeter to read it
 // For the one we're using, its 320 ohms across the X plate
-//inline TouchScreen ts = TouchScreen(XP, YP, XM, YM, 320);
+inline TouchScreen ts = TouchScreen(XP, YP, XM, YM, 320);
 
 
 /* --- Speaker --- */
@@ -62,6 +54,10 @@ unsigned long timeStartSlide = 0;     //time when slide was first shown;
 
 /* --- metric / imperial switch --- */
 bool MetricON = true;  //boolean to check if values of temperature and lightning distance are set in Celsius/km or Fahrenheit/miles => can be modified via TFT interface
+
+/* --- TouchScreen --- */
+int Xpos = 0;
+int Ypos = 0;
 
 void getTimeSinceBoot() {
 	allSeconds = millis() / 1000;
@@ -91,7 +87,40 @@ int freeMemory() {
 #endif  // __arm__
 }
 
+bool touchedMe()
+{
+  TSPoint p = ts.getPoint();
 
+  // if sharing pins, you'll need to fix the directions of the touchscreen pins
+  pinMode(XM, OUTPUT);
+  pinMode(YP, OUTPUT);
+  // we have some minimum pressure we consider 'valid'
+  // pressure of 0 means no pressing!
+  if ((p.z > MINPRESSURE) && (p.z <MAXPRESSURE))
+  {
+	//For some reason or another, these coordinates cannot be reliably gotten
+	// from myScreen->tft
+	int16_t height = 240;
+	int16_t width = 320;
+    // scale from 0->1023 to tft.width
+//	x = map(p.y, LEFT=80, RT=919, 0, 320)
+//	y = map(p.x, TOP=121, BOT=922, 0, 240)
+    Xpos = map(p.y, 80, 919, 0, 320);
+    Ypos = map(p.x,121, 922, 0, 240);
+
+//    Xpos = map(p.x, TS_MINX, TS_MAXX, width, 0);
+//    Ypos = (height-map(p.y, TS_MINY, TS_MAXY, height, 0));
+
+    Serial.print("X = "); Serial.print(Xpos);
+    Serial.print("\tY = "); Serial.print(Ypos);
+    Serial.print("\tPressure = "); Serial.println(p.z);
+    return true; //we have been touched (yeey!)
+  }
+  else
+  {
+    return false; //we haven't been touched (shame...)
+  }
+}
 
 
 

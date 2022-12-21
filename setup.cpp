@@ -27,6 +27,8 @@ void setup() {
 	Serial.println(F("----------------------------------"));
 	Serial.println();
 
+	//pinMode(touchPin, OUTPUT);
+
 	/* --- RGB LED pins --- */
 	if (LEDenabled) //set pins for RGB LED & set everything low => black, but only if LEDenabled = true
 	{
@@ -73,6 +75,10 @@ void setup() {
 
 	//Initialize all sensors, views, helpers and controllers
 	TFTHelper* myScreen = TFTHelper::GetInstance();
+
+
+
+	//myScreen->tft.setRotation(1);
 	myGas = new Gas();
 	myLightning = new Lightning();
 	myEnv = new Environment();
@@ -84,6 +90,10 @@ void setup() {
 	myMenuView = new MenuView(myScreen);
 	elc = new EarthListenerController(myEnv, myEnvView, myGas, myGasView, myLightning, myLightningView, myRTC, myMenuView, MetricON);
 	//END Initialize all sensors, views, helpers and controllers
+
+	// For better pressure precision, we need to know the resistance
+	// between X+ and X- Use any multimeter to read it
+	// For the one we're using, its 320 ohms across the X plate
 
 	/* --- end of boot, wait for a bit, then show info screen --- */
 	delay(2000);

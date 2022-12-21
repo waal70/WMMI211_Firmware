@@ -28,20 +28,18 @@ void loop() {
 	getTimeSinceBoot();
 
 	//get touch input (but only after XXX ms after last touchscreen event!)
-	if (!Serial.available()) //here was a check for
+	if((millis() - touchedTime) > touchTimeout)
 	{
-		if (touchedMe) {
+		if (touchedMe()) {
 			touchedTime = millis();
-			//Serial.print("We have been touched! X=");Serial.print(Xpos);Serial.print(", Y="); Serial.println(Ypos);
-			//inputControl();
-			//showScreen(currentScreenNr); //0:Boot, 1:Info screen, 2:Setup, 3:eCO², 4:Temperature 5:Pressure, 6:TVOC, 7:Humidity, 8:Lightning, 81:Lightning after interrupt
+			elc->processTouch(Xpos, Ypos);
 		}
 	}
 
 	//only do next code each second
 	if (runSeconds != lastSecond) {
 		//increase the secondCounter
-		elc->showSummary();
+		elc->refresh();
 		//Serial.print("*");
 		secondCounter++;
 		/****** poll sensors & update vars + log to SD *****/

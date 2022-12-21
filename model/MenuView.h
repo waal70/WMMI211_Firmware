@@ -25,6 +25,9 @@ public:
 		MENU_SETTINGS = 4,
 	};
 private:
+	void RenderLogo(uint16_t Color);
+	void RenderFooter();
+	void RenderCrumbTrail();
 	TFTHelper* myScreen;
 };
 

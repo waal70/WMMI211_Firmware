@@ -26,7 +26,6 @@ extern MenuView *myMenuView;
 extern EarthListenerController *elc;
 
 extern unsigned long touchedTime;
-extern bool touchedMe;
 extern unsigned long allSeconds;
 extern unsigned long runDays;
 extern unsigned long secsRemaining;
@@ -37,6 +36,8 @@ extern unsigned long runSeconds;
 extern unsigned long lastSecond;
 
 extern int secondCounter;
+
+extern int Xpos; extern int Ypos;
 
 // For better pressure precision, we need to know the resistance
 // between X+ and X- Use any multimeter to read it

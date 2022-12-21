@@ -25,6 +25,18 @@ public:
 			GasView* myGasView, Lightning* myLightning,
 			LightningView* myLightningView, RealTimeClock* myRTC, MenuView* myMenuView, bool isMetric);
 	void showSummary();
+	void processTouch (int Xpos, int Ypos);
+	void refresh();
+	enum CURRENTSCREEN {
+			OVERVIEW = 1,
+			TEMPERATURE = 2,
+			PRESSURE = 4,
+			ECO2 = 8,
+			TVOC = 16,
+			HUMIDITY = 32,
+			LIGHTNING = 64,
+			SETTINGS = 128
+		};
 private:
 	//Here the sensor pairs are declared:
 	//BME280:
@@ -37,6 +49,9 @@ private:
 	LightningView* myLightningView;
 	RealTimeClock* myRTC;
 	MenuView* myMenuView;
+
+	int PreviousScreen;
+	int CurrentScreen;
 	//RealTimeClockView myRTCView;
 };
 

@@ -20,3 +20,11 @@ Screen components that are more or less generic:
 Crumb-component: indicates how many screens there are + currently selected
 Menu-component: play button for slideshow and cog-wheel for settings
 
+PORTRAIT  CALIBRATION     240 x 320
+x = map(p.x, LEFT=922, RT=121, 0, 240)
+y = map(p.y, TOP=80, BOT=919, 0, 320)
+
+LANDSCAPE CALIBRATION     320 x 240
+x = map(p.y, LEFT=80, RT=919, 0, 320)
+y = map(p.x, TOP=121, BOT=922, 0, 240)
+

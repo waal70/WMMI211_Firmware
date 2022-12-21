@@ -26,6 +26,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_GFX_Library}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv/utility}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.66631968" name="CPP bron bestanden" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -38,6 +42,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_GFX_Library}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv/utility}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1898696962" name="C bron bestanden" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -50,6 +58,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_GFX_Library}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv/utility}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.570268177" name="Assembly bron bestanden" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
