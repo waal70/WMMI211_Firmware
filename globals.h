@@ -21,6 +21,7 @@ extern RealTimeClock *myRTC;
 extern GasView *myGasView;
 extern LightningView *myLightningView;
 extern EnvironmentView *myEnvView;
+extern MenuView *myMenuView;
 
 extern EarthListenerController *elc;
 

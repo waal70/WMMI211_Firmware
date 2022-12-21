@@ -81,7 +81,8 @@ void setup() {
 	myGasView = new GasView(myGas,myScreen);
 	myLightningView = new LightningView(myLightning,myScreen);
 	myEnvView = new EnvironmentView(myEnv, myScreen);
-	elc = new EarthListenerController(myEnv, myEnvView, myGas, myGasView, myLightning, myLightningView, myRTC, MetricON);
+	myMenuView = new MenuView(myScreen);
+	elc = new EarthListenerController(myEnv, myEnvView, myGas, myGasView, myLightning, myLightningView, myRTC, myMenuView, MetricON);
 	//END Initialize all sensors, views, helpers and controllers
 
 	/* --- end of boot, wait for a bit, then show info screen --- */
@@ -94,9 +95,9 @@ void setup() {
 
 	//show the info-screen:
 	elc->showSummary();
-	Serial.println(F("***End of setup, starting loop***"));
 	Serial.print(F("setup() complete: SRAM is now: "));
 	Serial.println(freeMemory());
+	Serial.println(F("***End of setup, starting loop***"));
 	Serial.println();
 
 }

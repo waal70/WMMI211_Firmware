@@ -19,6 +19,7 @@ RealTimeClock *myRTC = NULL;
 GasView *myGasView = NULL;
 LightningView *myLightningView = NULL;
 EnvironmentView *myEnvView = NULL;
+MenuView *myMenuView = NULL;
 
 EarthListenerController *elc = NULL;
 

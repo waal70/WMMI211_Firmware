@@ -16,13 +16,14 @@
 #include "LightningView.h"
 #include "RealTimeClock.h"
 //#include "RealTimeClockView.h"
+#include "MenuView.h"
 
 class EarthListenerController {
 public:
 	EarthListenerController(Environment* myEnvironment,
 			EnvironmentView* myEnvironmentView, Gas* myGas,
 			GasView* myGasView, Lightning* myLightning,
-			LightningView* myLightningView, RealTimeClock* myRTC, bool isMetric);
+			LightningView* myLightningView, RealTimeClock* myRTC, MenuView* myMenuView, bool isMetric);
 	void showSummary();
 private:
 	//Here the sensor pairs are declared:
@@ -35,6 +36,7 @@ private:
 	Lightning* myLightning;
 	LightningView* myLightningView;
 	RealTimeClock* myRTC;
+	MenuView* myMenuView;
 	//RealTimeClockView myRTCView;
 };
 

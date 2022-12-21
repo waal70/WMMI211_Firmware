@@ -42,7 +42,7 @@ void loop() {
 	if (runSeconds != lastSecond) {
 		//increase the secondCounter
 		elc->showSummary();
-		Serial.print("*");
+		//Serial.print("*");
 		secondCounter++;
 		/****** poll sensors & update vars + log to SD *****/
 		// make a string for assembling the data to log on the SD card & add the current time:
