@@ -6,8 +6,8 @@
  */
 
 #include "LightningView.h"
-#include "../bitmaps.h"
 #include "../config.h"
+#include "bitmaps.h"
 
 LightningView::LightningView(Lightning* model, TFTHelper* screen) {
 	this->model = model;

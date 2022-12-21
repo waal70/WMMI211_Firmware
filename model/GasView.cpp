@@ -5,7 +5,8 @@
  */
 
 #include "GasView.h"
-#include "../bitmaps.h"
+
+#include "bitmaps.h"
 
 
 GasView::GasView(Gas* model, TFTHelper* screen) {

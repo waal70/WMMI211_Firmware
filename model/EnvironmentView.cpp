@@ -6,8 +6,8 @@
  */
 
 #include "EnvironmentView.h"
-#include "../bitmaps.h"
 #include "../config.h"
+#include "bitmaps.h"
 //#include "TFTHelper.h";
 
 EnvironmentView::EnvironmentView(Environment *model, TFTHelper *screen) {
