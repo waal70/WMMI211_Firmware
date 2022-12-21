@@ -11,6 +11,14 @@
 #include <stdint.h>
 #include "../src/MCUFRIEND_kbv/MCUFRIEND_kbv.h"
 
+/**
+ * Class that encapsulates the MCUFRIEND_kbv TFT handling
+ *
+ * It is implemented as a Singleton, because there should be
+ * only one physical TFT-screen in this setup.
+ * The Singleton ensures only one instance is created
+ *
+ */
 class TFTHelper {
 
 protected:
@@ -24,6 +32,7 @@ public:
 
 	void showbgd(int x, int y, const uint8_t *bmp, int w, int h, uint16_t color, uint16_t bg);
 	void connect(void);
+	//TODO: is this a pointer (Singleton)
 	MCUFRIEND_kbv tft;
 
 private:

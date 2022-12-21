@@ -52,11 +52,6 @@
 			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_GFX_Library</location>
 		</link>
 		<link>
-			<name>libraries/Adafruit_TFTLCD_Library</name>
-			<type>2</type>
-			<location>C:/Users/awaal/Documents/Arduino/libraries/Adafruit_TFTLCD_Library</location>
-		</link>
-		<link>
 			<name>libraries/EEPROM</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/EEPROM</locationURI>

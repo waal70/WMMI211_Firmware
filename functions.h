@@ -1,19 +1,5 @@
 #include "model/EarthListenerController.h"
 
-extern TFTHelper *myScreen;
-
-extern Gas *myGas;
-extern Lightning *myLightning;
-extern Environment *myEnv;
-extern RealTimeClock *myRTC;
-
-extern GasView *myGasView;
-extern LightningView *myLightningView;
-extern EnvironmentView *myEnvView;
-
-extern EarthListenerController *elc;
-
-
 extern unsigned long touchedTime;
 extern bool touchedMe;
 extern unsigned long allSeconds;
@@ -35,23 +21,23 @@ extern int secondCounter;
 
 /* --- Speaker --- */
 //pin setup for speaker
-extern boolean BuzzerEnabled;      //1= Buzzer on, 0= Buzzer off => can be modified via TFT interface
+extern bool BuzzerEnabled;      //1= Buzzer on, 0= Buzzer off => can be modified via TFT interface
 
 
 /* --- RGB LED --- */
-extern boolean LEDenabled;     //1= LED on, 0= LED off. Will also declare pins for output if turned on.
+extern bool LEDenabled;     //1= LED on, 0= LED off. Will also declare pins for output if turned on.
 
 
 /* --- menus --- */
 extern int currentScreenNr;        //start with bootscreen
 extern int previousScreenNr;
-extern boolean slideShowPlaying;        //is the slide show playing? yes=1, no=0
+extern bool slideShowPlaying;        //is the slide show playing? yes=1, no=0
 extern int slideshowTimer;         //time (in seconds) to show each slide
 extern unsigned long timeStartSlide;     //time when slide was first shown;
 
 
 /* --- metric / imperial switch --- */
-extern boolean MetricON;  //boolean to check if values of temperature and lightning distance are set in Celsius/km or Fahrenheit/miles => can be modified via TFT interface
+extern bool MetricON;  //boolean to check if values of temperature and lightning distance are set in Celsius/km or Fahrenheit/miles => can be modified via TFT interface
 
 
 void getTimeSinceBoot();

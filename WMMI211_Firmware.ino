@@ -17,7 +17,7 @@
 
 #include "config.h"
 #include "functions.h"
-
+#include "globals.h"
 
 
 

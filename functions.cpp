@@ -1,4 +1,6 @@
 #include "model/EarthListenerController.h"
+#include "functions.h"
+#include "globals.h"
 
 struct WaitForSerial {
   WaitForSerial() {
@@ -43,23 +45,23 @@ int secondCounter = 0;
 
 /* --- Speaker --- */
 //pin setup for speaker
-boolean BuzzerEnabled;      //1= Buzzer on, 0= Buzzer off => can be modified via TFT interface
+bool BuzzerEnabled = true;      //1= Buzzer on, 0= Buzzer off => can be modified via TFT interface
 
 
 /* --- RGB LED --- */
-boolean LEDenabled = 1;     //1= LED on, 0= LED off. Will also declare pins for output if turned on.
+boolean LEDenabled = true;     //1= LED on, 0= LED off. Will also declare pins for output if turned on.
 
 
 /* --- menus --- */
 int currentScreenNr = 0;        //start with bootscreen
-int previousScreenNr;
-boolean slideShowPlaying;        //is the slide show playing? yes=1, no=0
+int previousScreenNr = 0;
+bool slideShowPlaying = false;        //is the slide show playing? yes=1, no=0
 int slideshowTimer = 5;         //time (in seconds) to show each slide
 unsigned long timeStartSlide = 0;     //time when slide was first shown;
 
 
 /* --- metric / imperial switch --- */
-boolean MetricON;  //boolean to check if values of temperature and lightning distance are set in Celsius/km or Fahrenheit/miles => can be modified via TFT interface
+bool MetricON = true;  //boolean to check if values of temperature and lightning distance are set in Celsius/km or Fahrenheit/miles => can be modified via TFT interface
 
 void getTimeSinceBoot() {
 	allSeconds = millis() / 1000;

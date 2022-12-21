@@ -27,7 +27,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/EEPROM/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_GFX_Library}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.66631968" name="CPP bron bestanden" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -41,7 +40,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/EEPROM/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_GFX_Library}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1898696962" name="C bron bestanden" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -55,7 +53,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/EEPROM/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_GFX_Library}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.570268177" name="Assembly bron bestanden" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>

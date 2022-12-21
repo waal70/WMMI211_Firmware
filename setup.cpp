@@ -4,8 +4,12 @@
  *  Created on: 20 dec. 2022
  *      Author: awaal
  */
+/***************************************/
+/* ----------- SETUP CODE ------------ */
+/***************************************/
 
 #include "functions.h"
+#include "globals.h"
 #include <EEPROM.h>
 
 void setup() {
@@ -61,17 +65,11 @@ void setup() {
 	digitalWrite(BuzzerPin, LOW);
 
 	/* --- SD card feedback --- */
-	//Serial.println("***SD card feedback***");
-	//Serial.print("Initializing...");
 	// make sure that the default chip select pin is set to
 	// output, even if you don't use it:
 	pinMode(SS, OUTPUT);
 
-	/* --- check if RTC is present --- */
-
-	//myRTC.connect();
-	//myRTC.getDayOfWeek();
-	/* --- end of boot, wait 2 secs & set interrupt state, then show info screen --- */
+	//Initialize all sensors, views, helpers and controllers
 	TFTHelper* myScreen = TFTHelper::GetInstance();
 	myGas = new Gas();
 	myLightning = new Lightning();
@@ -81,11 +79,18 @@ void setup() {
 	myGasView = new GasView(myGas,myScreen);
 	myLightningView = new LightningView(myLightning,myScreen);
 	myEnvView = new EnvironmentView(myEnv, myScreen);
+	elc = new EarthListenerController(myEnv, myEnvView, myGas, myGasView, myLightning, myLightningView, myRTC, MetricON);
+	//END Initialize all sensors, views, helpers and controllers
 
-	elc=new EarthListenerController(myEnv, myEnvView, myGas, myGasView, myLightning, myLightningView, myRTC);
+	/* --- end of boot, wait for a bit, then show info screen --- */
 	delay(2000);
+
+	//Although done in initialization, make doubly sure the lightning sensor is in a
+	// non-tripped state:
 	myLightning->isTriggered = false;
-	slideShowPlaying = 0;   //we always start without slide show
+	myLightning->lastTriggered = 0;
+
+	//show the info-screen:
 	elc->showSummary();
 	Serial.println("***End of setup, starting loop***");
 	Serial.println();

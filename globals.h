@@ -13,7 +13,18 @@
 #include "config.h"
 #include "model/EarthListenerController.h"
 
+extern TFTHelper *myScreen;
 
+extern Gas *myGas;
+extern Lightning *myLightning;
+extern Environment *myEnv;
+extern RealTimeClock *myRTC;
+
+extern GasView *myGasView;
+extern LightningView *myLightningView;
+extern EnvironmentView *myEnvView;
+
+extern EarthListenerController *elc;
 
 
 #endif /* GLOBALS_H_ */

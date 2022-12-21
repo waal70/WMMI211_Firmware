@@ -12,23 +12,23 @@
 #include "../src/MCUFRIEND_kbv/MCUFRIEND_kbv.h"
 
 TFTHelper::TFTHelper() {
-	//in construction, make sure all is populated...
-	//tft = &MCUFRIEND_kbv();
 	init();
 }
 
-TFTHelper* TFTHelper::pinstance_=nullptr;;
+// This holds the reference to the single instance
+TFTHelper *TFTHelper::pinstance_ = nullptr;
+;
 
-TFTHelper *TFTHelper::GetInstance()
-{
-    /**
-     * This is a safer way to create an instance. instance = new Singleton is
-     * dangeruous in case two instance threads wants to access at the same time
-     */
-    if(pinstance_==nullptr){
-        pinstance_ = new TFTHelper();
-    }
-    return pinstance_;
+// You should create/get instances via this method
+TFTHelper* TFTHelper::GetInstance() {
+	/**
+	 * This is a safer way to create an instance. instance = new Singleton is
+	 * dangeruous in case two instance threads wants to access at the same time
+	 */
+	if (pinstance_ == nullptr) {
+		pinstance_ = new TFTHelper();
+	}
+	return pinstance_;
 }
 
 void TFTHelper::init() {
@@ -86,12 +86,24 @@ void TFTHelper::init() {
 	pinMode(touchPin, OUTPUT);
 
 }
+
+//calls init(): kept for compatibility purposes
 void TFTHelper::connect() {
 	init();
 }
+/**
+ * Display an icon on a certain area of the screen
+ *
+ * @param[in] X-coordinate
+ * @param[in] Y-coordinate
+ * @param[in] PROGMEM map of bitmap to display
+ * @param[in] width in pixels
+ * @param[in] height in pixels
+ * @param[in] color
+ * @param[in] background color
+ */
 void TFTHelper::showbgd(int x, int y, const uint8_t *bmp, int w, int h,
 		uint16_t color, uint16_t bg) {
-	//Serial.println("TFTHelper::showbgd");
 	uint8_t pad = 7;
 	int yy, xx;
 	uint8_t first = 1, RVS = pad & 0x80;

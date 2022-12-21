@@ -10,7 +10,7 @@
 EarthListenerController::EarthListenerController(Environment* myEnvironment,
 			EnvironmentView* myEnvironmentView, Gas* myGas,
 			GasView* myGasView, Lightning* myLightning,
-			LightningView* myLightningView, RealTimeClock* myRTC){
+			LightningView* myLightningView, RealTimeClock* myRTC, bool isMetric){
 	Serial.println("EarthListenerController being created");
 	this->myEnvironment = myEnvironment;
 	this->myEnvironmentView = myEnvironmentView;
@@ -19,6 +19,9 @@ EarthListenerController::EarthListenerController(Environment* myEnvironment,
 	this->myLightning = myLightning;
 	this->myLightningView = myLightningView;
 	this->myRTC = myRTC;
+	//now pass metric system or idiot system:
+	this->myEnvironmentView->isMetric = isMetric;
+	this->myLightningView->isMetric = isMetric;
 }
 void EarthListenerController::showSummary() {
 	//Make sure the Gas thingy has the correct reference values;

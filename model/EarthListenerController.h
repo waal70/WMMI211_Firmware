@@ -22,7 +22,7 @@ public:
 	EarthListenerController(Environment* myEnvironment,
 			EnvironmentView* myEnvironmentView, Gas* myGas,
 			GasView* myGasView, Lightning* myLightning,
-			LightningView* myLightningView, RealTimeClock* myRTC);
+			LightningView* myLightningView, RealTimeClock* myRTC, bool isMetric);
 	void showSummary();
 private:
 	//Here the sensor pairs are declared:

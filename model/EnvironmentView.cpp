@@ -10,13 +10,14 @@
 #include "../config.h"
 //#include "TFTHelper.h";
 
-EnvironmentView::EnvironmentView(Environment* model, TFTHelper* screen) {
+EnvironmentView::EnvironmentView(Environment *model, TFTHelper *screen) {
 	this->model = model;
 	this->myScreen = screen;
+	this->isMetric = true;
 	Serial.println("EnvironmentView instantiated");
 }
 
-void EnvironmentView::setModel(Environment* model) {
+void EnvironmentView::setModel(Environment *model) {
 	this->model = model;
 }
 
@@ -45,23 +46,20 @@ void EnvironmentView::printValues() {
 	//TODO: implement setting metric/imperial
 	//if(MetricON)
 	//{
-	if (CTEMP < 10) {
-		myScreen->tft.print(" ");
-	}     //add leading spaces
-	myScreen->tft.print(CTEMP, 1);
-	myScreen->tft.print(" ");
-	myScreen->tft.print((char) 247); //to print the ° symbol
-	myScreen->tft.println("C  ");
-	//}
-	//else
-	//{
-	//   float TEMP_BME280_F = ((TEMP_BME280 * 9)/5 + 32);
-	//   if(TEMP_BME280_F < 10){   tft.print(" ");  }     //add leading spaces
-	//   tft.print(TEMP_BME280_F,1);
-	//   tft.print(" ");
-	//   tft.print((char)247); //to print the ° symbol
-	//   tft.println("F");
-	//}
+	char buffer[15] = { 0 }; //it can hold -10.2 *C - "%3s", string
+	//The way in which AVR handles floats and doubles is a bit awkward
+	// we use the dtostrf to pre-format the float value:
+	char floatbuffer[6] = { 0 };
+	char degrees = (char) 247;
+	if (isMetric) {
+		dtostrf(CTEMP, 5, 1, floatbuffer);
+		sprintf(buffer, "%s %cC", floatbuffer, degrees);
+	} else {
+		float CTEMP_F = ((CTEMP * 9) / 5 + 32);
+		dtostrf(CTEMP_F, 5, 1, floatbuffer);
+		sprintf(buffer, "%s %cF", floatbuffer, degrees);
+	}
+	myScreen->tft.println(buffer);
 
 	//Humidity
 	myScreen->tft.setCursor(140, 200);
@@ -73,21 +71,17 @@ void EnvironmentView::printValues() {
 	} else if (CHUM > 50) {
 		myScreen->tft.setTextColor(BLUE, BLACK);
 	}
-	if (CHUM < 10) {
-		myScreen->tft.print(" ");
-	}  //add leading spaces
-	myScreen->tft.print(CHUM, 1);
-	myScreen->tft.println(" %");
+	dtostrf(CHUM, 3, 1, floatbuffer); //100.0
+	sprintf(buffer, "%s %", floatbuffer);
+	myScreen->tft.println(buffer);
 
 	//Pressure
 	myScreen->tft.setCursor(215, 125);
 	myScreen->tft.setTextColor(GREY, BLACK);
 	int CPRES = model->getAmbientPressure();
-	if (CPRES < 1000) {
-		myScreen->tft.print(" ");     //add leading spaces
-	}
-	myScreen->tft.print(CPRES, 1);
-	myScreen->tft.println(" mBar");
+	dtostrf(CPRES, 6, 1, floatbuffer); //100.0
+	sprintf(buffer, "%s mbar", floatbuffer);
+	myScreen->tft.println(buffer);
 }
 
 void EnvironmentView::RenderAll() {
