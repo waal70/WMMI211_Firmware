@@ -62,11 +62,6 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/SPI</locationURI>
 		</link>
 		<link>
-			<name>libraries/SoftwareSerial</name>
-			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/SoftwareSerial</locationURI>
-		</link>
-		<link>
 			<name>libraries/Wire</name>
 			<type>2</type>
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.6/libraries/Wire</locationURI>

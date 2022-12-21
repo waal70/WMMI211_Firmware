@@ -1,8 +1,5 @@
 #include "Environment.h"
 
-#include "Sensors.h"
-#include "../config.h"
-
 //forward method declaration:
 void Environment::connect();
 

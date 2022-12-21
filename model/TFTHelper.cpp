@@ -9,7 +9,6 @@
 #include <stdint.h>
 #include "../config.h"
 
-#include "../src/MCUFRIEND_kbv/MCUFRIEND_kbv.h"
 
 TFTHelper::TFTHelper() {
 	init();
@@ -32,14 +31,14 @@ TFTHelper* TFTHelper::GetInstance() {
 }
 
 void TFTHelper::init() {
-	Serial.println("***LCD screen feedback***");
+	Serial.println(F("***LCD screen feedback***"));
 	Serial.println(F("TFT LCD test"));
 #ifdef USE_ADAFRUIT_SHIELD_PINOUT
   Serial.println(F("Using Adafruit 2.4\" TFT Arduino Shield Pinout"));
 #else
 	Serial.println(F("Using Adafruit 2.4\" TFT Breakout Board Pinout"));
 #endif
-	Serial.print("TFT size is ");
+	Serial.print(F("TFT size is "));
 	Serial.print(tft.width());
 	Serial.print("x");
 	Serial.println(tft.height());

@@ -1,9 +1,4 @@
 #include "Gas.h"
-#include "../config.h"
-#include "Sensors.h"
-
-//forward method declaration:
-void Gas::connect();
 
 Gas::Gas() : myCCS811(CCS811_ADDR) //CCS811 creation requires this address
 {

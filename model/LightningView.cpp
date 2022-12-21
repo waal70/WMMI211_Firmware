@@ -6,13 +6,12 @@
  */
 
 #include "LightningView.h"
-#include "../config.h"
 #include "bitmaps.h"
 
 LightningView::LightningView(Lightning* model, TFTHelper* screen) {
 	this->model = model;
 	this->myScreen = screen;
-	Serial.println("LightningView instantiated");
+	Serial.println(F("LightningView instantiated"));
 }
 void LightningView::setModel(Lightning* model) {
 	this->model = model;

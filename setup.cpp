@@ -15,14 +15,16 @@
 void setup() {
 	/* --- Start serial & print sketch info --- */
 	Serial.begin(9600);
-	Serial.println("----------------------------------");
-	Serial.print("Arduino is running Sketch: ");
+	Serial.println(F("----------------------------------"));
+	Serial.print(F("Arduino is running Sketch: "));
 	Serial.println(__FILE__);
-	Serial.print("Compiled on: ");
+	Serial.print(F("Compiled on: "));
 	Serial.print(__DATE__);
-	Serial.print(" at ");
+	Serial.print(F(" at "));
 	Serial.println(__TIME__);
-	Serial.println("----------------------------------");
+	Serial.print(F("Free SRAM is reported at: "));
+	Serial.println(freeMemory());
+	Serial.println(F("----------------------------------"));
 	Serial.println();
 
 	/* --- RGB LED pins --- */
@@ -92,7 +94,9 @@ void setup() {
 
 	//show the info-screen:
 	elc->showSummary();
-	Serial.println("***End of setup, starting loop***");
+	Serial.println(F("***End of setup, starting loop***"));
+	Serial.print(F("setup() complete: SRAM is now: "));
+	Serial.println(freeMemory());
 	Serial.println();
 
 }

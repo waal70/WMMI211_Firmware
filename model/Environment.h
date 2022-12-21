@@ -1,7 +1,8 @@
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 #include "AbstractModel.h"
-#include "../src/SparkFun_BME280/src/SparkFunBME280.h"
+#include "../config.h"
+#include "Sensors.h"
 
 class Environment : AbstractModel {
 

@@ -1,8 +1,5 @@
 #include "Lightning.h"
 
-#include "../config.h"
-#include "Sensors.h"
-
 bool Lightning::isTriggered = false; //needed for static variables
 unsigned long Lightning::lastTriggered = 0;
 

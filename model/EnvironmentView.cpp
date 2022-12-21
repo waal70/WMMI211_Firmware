@@ -6,15 +6,13 @@
  */
 
 #include "EnvironmentView.h"
-#include "../config.h"
 #include "bitmaps.h"
-//#include "TFTHelper.h";
 
 EnvironmentView::EnvironmentView(Environment *model, TFTHelper *screen) {
 	this->model = model;
 	this->myScreen = screen;
 	this->isMetric = true;
-	Serial.println("EnvironmentView instantiated");
+	Serial.println(F("EnvironmentView instantiated"));
 }
 
 void EnvironmentView::setModel(Environment *model) {

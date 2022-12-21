@@ -4,7 +4,8 @@
 #include <stdint.h>
 
 #include "AbstractModel.h"
-#include "../src/SparkFun_AS3935/src/SparkFun_AS3935.h"
+#include "Sensors.h"
+#include "../config.h"
 
 class Lightning : AbstractModel {
 

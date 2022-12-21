@@ -2,8 +2,8 @@
 #define GAS_H
 
 #include <stdint.h>
-#include "../src/SparkFun_CCS811/src/SparkFunCCS811.h"
 #include "../config.h"
+#include "Sensors.h"
 #include "AbstractModel.h"
 
 class Gas : AbstractModel {

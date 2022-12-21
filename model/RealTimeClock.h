@@ -2,7 +2,8 @@
 #define REALTIMECLOCK_H
 
 #include "AbstractModel.h"
-#include "../src/ds1302/DS1302.h" //The RTC
+#include "Sensors.h"
+#include "../config.h"
 
 class RealTimeClock: public AbstractModel {
 

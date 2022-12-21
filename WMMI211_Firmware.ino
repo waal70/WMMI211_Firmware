@@ -12,14 +12,12 @@
 /* ---------- DECLARATIONS ----------- */
 /***************************************/
 /* --- Global Libraries --- */
-#pragma once
-#include <Wire.h>                               // Wire library
 
-#include "config.h"
+// Contains utility functions:
 #include "functions.h"
+
+// Contains globally used objects:
 #include "globals.h"
-
-
 
 /***************************************/
 /* ----------- LOOP CODE ------------ */
