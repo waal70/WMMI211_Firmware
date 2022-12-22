@@ -9,12 +9,13 @@
 #define MODEL_MENUVIEW_H_
 
 #include "AbstractView.h"
+#include "Menu.h"
 #include "../config.h"
 
 //The menu does not have a model? Or is that the settings?
 class MenuView: public AbstractView {
 public:
-	MenuView(TFTHelper* screen);
+	MenuView(Menu* model, TFTHelper* screen);
 	void RenderAll();
 	void Render();
 	void Render(int detailRequired);
@@ -28,6 +29,8 @@ private:
 	void RenderLogo(uint16_t Color);
 	void RenderFooter();
 	void RenderCrumbTrail();
+	void RenderSettings();
+	Menu* model;
 	TFTHelper* myScreen;
 };
 

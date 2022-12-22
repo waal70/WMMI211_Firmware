@@ -17,11 +17,12 @@
 // TVOC (showTVOC): detail for Total Volatile Organic Compound
 // Settings (showSettings): configuration screen for Earth Listener
 
-EarthListenerController::EarthListenerController(Environment* myEnvironment,
-			EnvironmentView* myEnvironmentView, Gas* myGas,
-			GasView* myGasView, Lightning* myLightning,
-			LightningView* myLightningView, RealTimeClock* myRTC, MenuView* myMenuView, bool isMetric){
-	Serial.println("EarthListenerController being created");
+EarthListenerController::EarthListenerController(Environment *myEnvironment,
+		EnvironmentView *myEnvironmentView, Gas *myGas, GasView *myGasView,
+		Lightning *myLightning, LightningView *myLightningView,
+		RealTimeClock *myRTC, Menu *myMenu, MenuView *myMenuView) {
+	Serial.println(F("EarthListenerController being created"));
+	bool isMetric = myMenu->getMetric();
 	this->myEnvironment = myEnvironment;
 	this->myEnvironmentView = myEnvironmentView;
 	this->myGas = myGas;
@@ -29,6 +30,7 @@ EarthListenerController::EarthListenerController(Environment* myEnvironment,
 	this->myLightning = myLightning;
 	this->myLightningView = myLightningView;
 	this->myRTC = myRTC;
+	this->myMenu = myMenu;
 	this->myMenuView = myMenuView;
 	//now pass metric system or idiot system:
 	this->myEnvironmentView->isMetric = isMetric;
@@ -39,75 +41,75 @@ EarthListenerController::EarthListenerController(Environment* myEnvironment,
 void EarthListenerController::showSummary() {
 	//Make sure the Gas thingy has the correct reference values;
 	CurrentScreen = OVERVIEW;
-	myGas->setReferences(myEnvironment->getTemperature(), myEnvironment->getHumidity());
+	myGas->setReferences(myEnvironment->getTemperature(),
+			myEnvironment->getHumidity());
 	myEnvironmentView->Render(EnvironmentView::ENV_ALL);
 	myGasView->Render(GasView::GAS_ALL);
 	myLightningView->Render(LightningView::LIGHTNING_ALL);
 	myMenuView->Render(MenuView::MENU_ALL);
 }
-void EarthListenerController::refresh(){
-	if (CurrentScreen != PreviousScreen){
+void EarthListenerController::refresh() {
+	if (CurrentScreen != PreviousScreen) {
 		myEnvironmentView->clear();
 		PreviousScreen = CurrentScreen;
 	}
-	switch (CurrentScreen){
+	switch (CurrentScreen) {
 	case OVERVIEW:
 		showSummary();
+		break;
+	case SETTINGS:
+		showSettings();
 		break;
 	case TEMPERATURE:
 		myEnvironmentView->Render(EnvironmentView::ENV_TEMPERATURE);
 		break;
 	}
 }
+void EarthListenerController::showSettings() {
+	// This responsibility is handled by MenuView
+	myMenuView->Render(MenuView::MENU_SETTINGS);
+}
 void EarthListenerController::processTouch(int Xpos, int Ypos) {
-          //Slide show button:
-          if( (Xpos > 0) && (Xpos < 45) && (Ypos > 0) && (Ypos < 30) )
-          {
-            //Serial.println("Touch on slide show button!");
-          }
-          //Setup screen button
-          else if( (Xpos > 0) && (Xpos < 45) && (Ypos > 210) && (Ypos < 245) )
-          {
-        	  CurrentScreen = OVERVIEW;
-        	  refresh();
-            //Serial.println("Touch on setup screen button!");
-          }
-          //check eCO2 button
-          else if( (Xpos > 140) && (Xpos < 220) && (Ypos > 30) && (Ypos < 80) )
-          {
-            //Serial.println("Touch on eCO2 button!");
-          }
-          //check temp button
-          else if( (Xpos > 140) && (Xpos < 220) && (Ypos > 100) && (Ypos < 140) )
-          {
-            //Serial.println("Touch on temp button!");
-        	  CurrentScreen = TEMPERATURE;
-        	  refresh();
-          }
-          //check pressure button
-          else if( (Xpos > 140) && (Xpos < 220) && (Ypos > 165) && (Ypos < 210) )
-          {
-            //Serial.println("Touch on pressure button!");
-          }
-          //check tvoc button
-          else if( (Xpos > 50) && (Xpos < 110) && (Ypos > 30) && (Ypos < 80) )
-          {
-            //Serial.println("Touch on tvoc button!");
-          }
-          //check humidity button
-          else if( (Xpos > 50) && (Xpos < 110) && (Ypos > 100) && (Ypos < 140) )
-          {
-            //Serial.println("Touch on humidity button!");
-          }
-          //check lightning button
-          else if( (Xpos > 50) && (Xpos < 110) && (Ypos > 165) && (Ypos < 210) )
-          {
-            //Serial.println("Touch on lightning button!");
-          }
-          else
-          {
-            //Serial.println("I do not know what you are touching...");
-          }
+	//Slide show button:
+	if ((Xpos > 0) && (Xpos < 45) && (Ypos > 0) && (Ypos < 30)) {
+		//Serial.println("Touch on slide show button!");
+		CurrentScreen = OVERVIEW;
+		refresh();
+	}
+	//Setup screen button
+	else if ((Xpos > 0) && (Xpos < 45) && (Ypos > 210) && (Ypos < 245)) {
+		//Serial.println("Touch on setup screen button!");
+		CurrentScreen = SETTINGS;
+		refresh();
+	}
+	//check eCO2 button
+	else if ((Xpos > 140) && (Xpos < 220) && (Ypos > 30) && (Ypos < 80)) {
+		//Serial.println("Touch on eCO2 button!");
+	}
+	//check temp button
+	else if ((Xpos > 140) && (Xpos < 220) && (Ypos > 100) && (Ypos < 140)) {
+		//Serial.println("Touch on temp button!");
+		CurrentScreen = TEMPERATURE;
+		refresh();
+	}
+	//check pressure button
+	else if ((Xpos > 140) && (Xpos < 220) && (Ypos > 165) && (Ypos < 210)) {
+		//Serial.println("Touch on pressure button!");
+	}
+	//check tvoc button
+	else if ((Xpos > 50) && (Xpos < 110) && (Ypos > 30) && (Ypos < 80)) {
+		//Serial.println("Touch on tvoc button!");
+	}
+	//check humidity button
+	else if ((Xpos > 50) && (Xpos < 110) && (Ypos > 100) && (Ypos < 140)) {
+		//Serial.println("Touch on humidity button!");
+	}
+	//check lightning button
+	else if ((Xpos > 50) && (Xpos < 110) && (Ypos > 165) && (Ypos < 210)) {
+		//Serial.println("Touch on lightning button!");
+	} else {
+		//Serial.println("I do not know what you are touching...");
+	}
 
 //      //setup screen
 //      case 2:
@@ -218,5 +220,4 @@ void EarthListenerController::processTouch(int Xpos, int Ypos) {
 //        break;
 //    }
 }
-
 

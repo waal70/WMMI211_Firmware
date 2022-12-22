@@ -12,6 +12,7 @@
 #define GLOBALS_H_
 
 extern TFTHelper *myScreen;
+extern Menu * myMenu;
 
 extern Gas *myGas;
 extern Lightning *myLightning;
@@ -45,27 +46,12 @@ extern int Xpos; extern int Ypos;
 //inline TouchScreen ts = TouchScreen(XP, YP, XM, YM, 320);
 
 
-/* --- Speaker --- */
-//pin setup for speaker
-extern bool BuzzerEnabled;      //1= Buzzer on, 0= Buzzer off => can be modified via TFT interface
-
-
 /* --- RGB LED --- */
 extern bool LEDenabled;     //1= LED on, 0= LED off. Will also declare pins for output if turned on.
-
 
 /* --- menus --- */
 extern int currentScreenNr;        //start with bootscreen
 extern int previousScreenNr;
-extern bool slideShowPlaying;        //is the slide show playing? yes=1, no=0
-extern int slideshowTimer;         //time (in seconds) to show each slide
 extern unsigned long timeStartSlide;     //time when slide was first shown;
-
-
-/* --- metric / imperial switch --- */
-extern bool MetricON;  //boolean to check if values of temperature and lightning distance are set in Celsius/km or Fahrenheit/miles => can be modified via TFT interface
-
-
-
 
 #endif /* GLOBALS_H_ */

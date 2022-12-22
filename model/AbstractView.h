@@ -14,6 +14,7 @@ class AbstractView {
 public:
 	AbstractView();
 	bool isMetric;
+
 	//void setTFTHelper(const TFTHelper &myScreen);
 
 private:

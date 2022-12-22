@@ -2,6 +2,7 @@
 #include <TouchScreen.h>
 
 TFTHelper *myScreen = NULL;
+Menu *myMenu = NULL;
 Gas *myGas = NULL;
 Lightning *myLightning = NULL;
 Environment *myEnv = NULL;
@@ -12,10 +13,7 @@ LightningView *myLightningView = NULL;
 EnvironmentView *myEnvView = NULL;
 MenuView *myMenuView = NULL;
 
-
-
 EarthListenerController *elc = NULL;
-
 
 unsigned long touchedTime = 0;     //time when last touchscreen interaction occurred;
 unsigned long allSeconds = 0;
@@ -34,26 +32,13 @@ int secondCounter = 0;
 // For the one we're using, its 320 ohms across the X plate
 inline TouchScreen ts = TouchScreen(XP, YP, XM, YM, 320);
 
-
-/* --- Speaker --- */
-//pin setup for speaker
-bool BuzzerEnabled = true;      //1= Buzzer on, 0= Buzzer off => can be modified via TFT interface
-
-
 /* --- RGB LED --- */
 boolean LEDenabled = true;     //1= LED on, 0= LED off. Will also declare pins for output if turned on.
-
 
 /* --- menus --- */
 int currentScreenNr = 0;        //start with bootscreen
 int previousScreenNr = 0;
-bool slideShowPlaying = false;        //is the slide show playing? yes=1, no=0
-int slideshowTimer = 5;         //time (in seconds) to show each slide
 unsigned long timeStartSlide = 0;     //time when slide was first shown;
-
-
-/* --- metric / imperial switch --- */
-bool MetricON = true;  //boolean to check if values of temperature and lightning distance are set in Celsius/km or Fahrenheit/miles => can be modified via TFT interface
 
 /* --- TouchScreen --- */
 int Xpos = 0;
@@ -120,6 +105,64 @@ bool touchedMe()
   {
     return false; //we haven't been touched (shame...)
   }
+}
+
+/*
+ * R : RED
+ * G : GREEN
+ * Y : YELLOW
+ * O : ORANGE
+ * B : BLUE
+ * W : WHITE
+ * X : OFF
+ */
+void controlLed(char COLOR)
+{
+    if(LEDenabled)
+    {
+      switch (COLOR)
+      {
+        case 'R':     //red
+          digitalWrite(LEDr, HIGH);
+          digitalWrite(LEDg, LOW);
+          digitalWrite(LEDb, LOW);
+          break;
+        case 'G':     //green
+          digitalWrite(LEDr, LOW);
+          digitalWrite(LEDg, HIGH);
+          digitalWrite(LEDb, LOW);
+          break;
+        case 'Y':     //yellow
+          digitalWrite(LEDr, HIGH);
+          digitalWrite(LEDg, HIGH);
+          digitalWrite(LEDb, LOW);
+          break;
+        case 'O':	//orange
+          digitalWrite(LEDr, HIGH);
+          digitalWrite(LEDg, LOW);
+          digitalWrite(LEDb, HIGH);
+          break;
+        case 'B':     //blue
+          digitalWrite(LEDr, LOW);
+          digitalWrite(LEDg, LOW);
+          digitalWrite(LEDb, HIGH);
+          break;
+        case 'W':     //white
+          digitalWrite(LEDr, HIGH);
+          digitalWrite(LEDg, HIGH);
+          digitalWrite(LEDb, HIGH);
+          break;
+        case 'X':     //off
+          digitalWrite(LEDr, LOW);
+          digitalWrite(LEDg, LOW);
+          digitalWrite(LEDb, LOW);
+          break;
+        default:	 //off
+          digitalWrite(LEDr, LOW);
+          digitalWrite(LEDg, LOW);
+          digitalWrite(LEDb, LOW);
+      }
+    }
 }
 
 

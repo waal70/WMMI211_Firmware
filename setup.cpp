@@ -28,7 +28,7 @@ void setup() {
 	Serial.println();
 
 	//pinMode(touchPin, OUTPUT);
-
+	LEDenabled = true;
 	/* --- RGB LED pins --- */
 	if (LEDenabled) //set pins for RGB LED & set everything low => black, but only if LEDenabled = true
 	{
@@ -60,11 +60,7 @@ void setup() {
 		EEPROM.write(firstBoot_EEPROMaddr, false); //set firstboot on false, this will not be run again
 	}
 
-	//read value from EEPROM if Temp is in °F or °C and lightning units are in km or mi
-	MetricON = EEPROM.read(MetricON_EEPROMaddr); //read metric or imperial state from memory. If not set, this will be true, since all EEPROM addresses are 0xFF by default
-
 	/* --- set buzzer pin & read value from EEPROM --- */
-	BuzzerEnabled = EEPROM.read(Buzzer_EEPROMaddr);
 	pinMode(BuzzerPin, OUTPUT);
 	digitalWrite(BuzzerPin, LOW);
 
@@ -74,9 +70,8 @@ void setup() {
 	pinMode(SS, OUTPUT);
 
 	//Initialize all sensors, views, helpers and controllers
-	TFTHelper* myScreen = TFTHelper::GetInstance();
-
-
+	TFTHelper *myScreen = TFTHelper::GetInstance();
+	Menu *myMenu = Menu::GetInstance();
 
 	//myScreen->tft.setRotation(1);
 	myGas = new Gas();
@@ -84,11 +79,12 @@ void setup() {
 	myEnv = new Environment();
 	myRTC = new RealTimeClock();
 
-	myGasView = new GasView(myGas,myScreen);
-	myLightningView = new LightningView(myLightning,myScreen);
+	myGasView = new GasView(myGas, myScreen);
+	myLightningView = new LightningView(myLightning, myScreen);
 	myEnvView = new EnvironmentView(myEnv, myScreen);
-	myMenuView = new MenuView(myScreen);
-	elc = new EarthListenerController(myEnv, myEnvView, myGas, myGasView, myLightning, myLightningView, myRTC, myMenuView, MetricON);
+	myMenuView = new MenuView(myMenu, myScreen);
+	elc = new EarthListenerController(myEnv, myEnvView, myGas, myGasView,
+			myLightning, myLightningView, myRTC, myMenu, myMenuView);
 	//END Initialize all sensors, views, helpers and controllers
 
 	// For better pressure precision, we need to know the resistance
@@ -110,8 +106,21 @@ void setup() {
 	Serial.println(F("***End of setup, starting loop***"));
 	Serial.println();
 
+	//let's test the LED:
+	controlLed('R');
+	delay(1000);
+	controlLed('G');
+	delay(1000);
+	controlLed('Y');
+	delay(1000);
+	controlLed('O');
+	delay(1000);
+	controlLed('W');
+	delay(1000);
+	controlLed('B');
+	delay(1000);
+	controlLed('X');
+	delay(1000);
+
 }
-
-
-
 

@@ -48,9 +48,9 @@ void loop() {
 		//interrupt from lightning sensor! -> show lightning screen, otherwise show info screen
 		//we only do this if AS3935_bootOK is true (otherwise noise from sensor)
 		//check if slideshow is on
-		if (slideShowPlaying) {
+		if (myMenu->getSlideshowRunning()) {
 			//automatically change the screen every time the slideshowTimer value has been reached
-			if ((millis() - timeStartSlide) > (slideshowTimer * 1000)) {
+			if ((millis() - timeStartSlide) > (myMenu->getSlideshowTimer() * 1000)) {
 				previousScreenNr = currentScreenNr;
 				currentScreenNr++;
 				if (currentScreenNr > 8) {

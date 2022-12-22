@@ -4,6 +4,7 @@
 void getTimeSinceBoot();
 int freeMemory();
 bool touchedMe();
+void controlLed(char Color);
 
 //#include <stdint.h>
 //#include "src\ds1302\DS1302.h"
