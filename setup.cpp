@@ -10,7 +10,6 @@
 
 #include "functions.h"
 #include "globals.h"
-#include <EEPROM.h>
 
 void setup() {
 	/* --- Start serial & print sketch info --- */
