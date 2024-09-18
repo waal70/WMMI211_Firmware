@@ -91,6 +91,15 @@
 #define MINPRESSURE 10
 #define MAXPRESSURE 1000
 
+#define VERT_TOP	0
+#define VERT_FIRST	1
+#define VERT_SECOND	2
+#define VERT_BOTTOM	3
+
+#define HOR_LEFT	0
+#define HOR_MIDDLE	1
+#define HOR_RIGHT	2
+
 #define touchTimeout 300 // timeout between touch inputs (ms)
 
 // The control pins for the LCD can be assigned to any digital or

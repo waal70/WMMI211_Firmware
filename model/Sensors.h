@@ -8,10 +8,12 @@
 #ifndef MODEL_SENSORS_H_
 #define MODEL_SENSORS_H_
 
-#include "../src/SparkFun_AS3935/src/SparkFun_AS3935.h"
-#include "../src/SparkFun_BME280/src/SparkFunBME280.h"
-#include "../src/SparkFun_CCS811/src/SparkFunCCS811.h"
-#include "../src/ds1302/DS1302.h"
+
+#include "SparkFun_AS3935.h"
+#include "SparkFunBME280.h"
+#include "SparkFunCCS811.h"
+#include "DS1302.h" // https://github.com/msparks/arduino-ds1302
+
 
 
 #endif /* MODEL_SENSORS_H_ */

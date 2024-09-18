@@ -96,6 +96,10 @@ bool touchedMe()
 //    Xpos = map(p.x, TS_MINX, TS_MAXX, width, 0);
 //    Ypos = (height-map(p.y, TS_MINY, TS_MAXY, height, 0));
 
+    //discard the event if either of x or y is negative:
+    if ((Xpos < 0) || (Ypos < 0))
+    	return false;
+
     Serial.print("X = "); Serial.print(Xpos);
     Serial.print("\tY = "); Serial.print(Ypos);
     Serial.print("\tPressure = "); Serial.println(p.z);

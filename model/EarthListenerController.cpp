@@ -71,45 +71,96 @@ void EarthListenerController::showSettings() {
 }
 void EarthListenerController::processTouch(int Xpos, int Ypos) {
 	//Slide show button:
-	if ((Xpos > 0) && (Xpos < 45) && (Ypos > 0) && (Ypos < 30)) {
-		//Serial.println("Touch on slide show button!");
-		CurrentScreen = OVERVIEW;
-		refresh();
+
+	// The screen is vertically divided into four touchzones: top row, first row, second row, bottom row.
+	// For first and second row: horizontally, it is split in three: left, middle and right
+	// the top row does not matter: always returns to home screen
+	// the bottom row is divided in two: SLIDESHOW (left) and CONFIG (right)
+	// Based on the touch, I will ascertain the zone that was touched.
+	// First off: the vertical zone:
+	if ((Ypos > 0) && (Ypos < 55)) {
+		ySelect = VERT_TOP;
 	}
-	//Setup screen button
-	else if ((Xpos > 0) && (Xpos < 45) && (Ypos > 210) && (Ypos < 245)) {
-		//Serial.println("Touch on setup screen button!");
-		CurrentScreen = SETTINGS;
-		refresh();
+	else if ((Ypos > 55) && (Ypos < 140)) {
+		ySelect = VERT_FIRST;
 	}
-	//check eCO2 button
-	else if ((Xpos > 140) && (Xpos < 220) && (Ypos > 30) && (Ypos < 80)) {
-		//Serial.println("Touch on eCO2 button!");
+	else if ((Ypos > 140 ) && (Ypos < 215 ))  {
+		ySelect = VERT_SECOND;
 	}
-	//check temp button
-	else if ((Xpos > 140) && (Xpos < 220) && (Ypos > 100) && (Ypos < 140)) {
-		//Serial.println("Touch on temp button!");
-		CurrentScreen = TEMPERATURE;
-		refresh();
+	else if (Ypos > 215) {
+		ySelect = VERT_BOTTOM;
 	}
-	//check pressure button
-	else if ((Xpos > 140) && (Xpos < 220) && (Ypos > 165) && (Ypos < 210)) {
-		//Serial.println("Touch on pressure button!");
+	if ((Xpos > 0) && (Xpos < 115)) {
+		xSelect = HOR_LEFT;
 	}
-	//check tvoc button
-	else if ((Xpos > 50) && (Xpos < 110) && (Ypos > 30) && (Ypos < 80)) {
-		//Serial.println("Touch on tvoc button!");
+	else if ((Xpos > 115) && (Xpos < 210)) {
+		xSelect = HOR_MIDDLE;
 	}
-	//check humidity button
-	else if ((Xpos > 50) && (Xpos < 110) && (Ypos > 100) && (Ypos < 140)) {
-		//Serial.println("Touch on humidity button!");
+	else if ((Xpos > 210) && (Xpos < 318)) {
+		xSelect = HOR_RIGHT;
 	}
-	//check lightning button
-	else if ((Xpos > 50) && (Xpos < 110) && (Ypos > 165) && (Ypos < 210)) {
-		//Serial.println("Touch on lightning button!");
-	} else {
-		//Serial.println("I do not know what you are touching...");
+
+	//char buffer[50];
+	//sprintf(buffer, "Processing touch event: VERT, HOR %02d:%02d", ySelect, xSelect);
+	//Serial.println(buffer);
+
+
+	switch (ySelect) {
+		case VERT_TOP: {
+			CurrentScreen = OVERVIEW;
+			refresh();
+			break;
+		}
+		case VERT_BOTTOM: {
+			if (xSelect == HOR_LEFT) {
+				//Slideshow
+			}
+			else {
+				//Config
+			}
+			break;
+		}
+		case VERT_FIRST: {
+			Serial.print("VERT_FIRST, ");
+			if (xSelect == HOR_LEFT) {
+				Serial.println("LEFT");
+				CurrentScreen = ECO2;
+				refresh();
+			}
+			if (xSelect == HOR_MIDDLE) {
+				Serial.println("MIDDLE");
+				CurrentScreen = TEMPERATURE;
+				refresh();
+			}
+			if (xSelect == HOR_RIGHT) {
+				Serial.println("RIGHT");
+				CurrentScreen = PRESSURE;
+				refresh();
+			}
+			break;
+		}
+		case VERT_SECOND: {
+			Serial.print("VERT_SECOND, ");
+			if (xSelect == HOR_LEFT) {
+				Serial.println("LEFT");
+				CurrentScreen = TVOC;
+				refresh();
+			}
+			if (xSelect == HOR_MIDDLE) {
+				Serial.println("MIDDLE");
+				CurrentScreen = HUMIDITY;
+				refresh();
+			}
+			if (xSelect == HOR_RIGHT) {
+				Serial.println("RIGHT");
+				CurrentScreen = LIGHTNING;
+				refresh();
+			}
+			break;
+		}
 	}
+
+
 
 //      //setup screen
 //      case 2:

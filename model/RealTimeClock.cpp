@@ -8,14 +8,17 @@
 #include "RealTimeClock.h"
 
 RealTimeClock::RealTimeClock() :
+
 		myRTC(kCePin, kIoPin, kSclkPin) {
 
 	Serial.println(F("***DS1302 Sensor feedback***"));
 	isConnected = false;
 	connect();
+
 }
 
 void RealTimeClock::connect() {
+
 	Time t = myRTC.time();
 	if (t.mon == 165)    //when there is no clock, t.mon equals 165
 			{
@@ -53,7 +56,7 @@ char* RealTimeClock::getDate() {
 	//31-12-2022
 	char buffer[10];
 	Time t = myRTC.time();
-	sprintf(buffer, "%02d-%02d-%04d", t.date, t.mon, t.yr);
+	sprintf(buffer, "%02d-%02d-%04d", t.day, t.mon, t.yr);
 	return buffer;
 }
 char* RealTimeClock::dayAsString(Time t) {
@@ -79,7 +82,6 @@ char* RealTimeClock::dayAsString(Time t) {
 char* RealTimeClock::getDayOfWeek() {
 	if (!isConnected)
 		connect();
-	//Wednesday
 	Time t = myRTC.time();
 	return dayAsString(t);
 }

@@ -27,9 +27,14 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv/utility}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_AS3935_Lightning_Detector_Arduino_Library/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_BME280/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_CCS811_Arduino_Library/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Time}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/arduino-ds1302}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.66631968" name="CPP bron bestanden" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
@@ -43,9 +48,14 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv/utility}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_AS3935_Lightning_Detector_Arduino_Library/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_BME280/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_CCS811_Arduino_Library/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Time}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/arduino-ds1302}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1898696962" name="C bron bestanden" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
@@ -59,9 +69,14 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_BusIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TFTLCD_Library}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv/utility}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/MCUFRIEND_kbv}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Adafruit_TouchScreen}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_AS3935_Lightning_Detector_Arduino_Library/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_BME280/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/SparkFun_CCS811_Arduino_Library/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/Time}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/WMMI211_Firmware/libraries/arduino-ds1302}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.S.sketch.input.570268177" name="Assembly bron bestanden" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
@@ -102,7 +117,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*|libraries/Adafruit_TFTLCD_Library/assets|libraries/?*/**/?xtras/**|libraries/Adafruit_GFX_Library/fontconvert|libraries/Adafruit_GFX_Library/Fonts|libraries/Adafruit_TFTLCD_Library/bitmaps|libraries/?*/**/?xamples/**|libraries/?*/**/test*/**" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="libraries/Time/docs|libraries/Ds1302/doc|libraries/SparkFun_AS3935_Lightning_Detector_Arduino_Library/Documents|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*|libraries/Adafruit_TFTLCD_Library/assets|libraries/?*/**/?xtras/**|libraries/Adafruit_GFX_Library/fontconvert|libraries/Adafruit_GFX_Library/Fonts|libraries/Adafruit_TFTLCD_Library/bitmaps|libraries/?*/**/?xamples/**|libraries/?*/**/test*/**" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

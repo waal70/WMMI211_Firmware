@@ -53,6 +53,8 @@ private:
 
 	int PreviousScreen;
 	int CurrentScreen;
+	int ySelect;
+	int xSelect;
 	//RealTimeClockView myRTCView;
 	void showSettings();
 };

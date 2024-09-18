@@ -12,9 +12,13 @@ Gas::Gas() : myCCS811(CCS811_ADDR) //CCS811 creation requires this address
 }
 
 void Gas::initialize() {
-	CCS811Core::status returnCode;
-	returnCode = myCCS811.begin();
-	if (returnCode != CCS811Core::SENSOR_SUCCESS) {
+	CCS811Core::CCS811_Status_e returnCode;
+	//CCS811Core::status_e returnCode;
+	Wire.begin();
+	returnCode = myCCS811.beginCore(Wire);
+	//returnCode = myCCS811.begin();
+	if (returnCode != CCS811Core::CCS811_Stat_SUCCESS) {
+	//if (returnCode != CCS811Core::SENSOR_SUCCESS) {
 		Serial.println("CCS811 Sensor connection failed!");
 		isConnected = false;
 	}
@@ -47,7 +51,7 @@ bool Gas::updateSensor() {
 	if (myCCS811.checkForStatusError())
 	{
 		//error no data available
-		Serial.println("ERROR; CCS811 indicates no data available!");
+		//Serial.println("ERROR; CCS811 indicates no data available!");
 		return false;
 	}
 	else if (myCCS811.dataAvailable())
