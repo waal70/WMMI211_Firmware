@@ -10,7 +10,7 @@
 
 AbstractView::AbstractView() {
 	//Serial.println("AbstractView instantiated");
-
+	this->isMetric = true;
 }
 //void AbstractView::setTFTHelper(const TFTHelper &myScreen){
 //	this->myScreen = myScreen;

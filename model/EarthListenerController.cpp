@@ -37,6 +37,8 @@ EarthListenerController::EarthListenerController(Environment *myEnvironment,
 	this->myLightningView->isMetric = isMetric;
 	this->CurrentScreen = OVERVIEW;
 	this->PreviousScreen = OVERVIEW;
+	this->xSelect = HOR_LEFT;
+	this->ySelect = VERT_TOP;
 }
 void EarthListenerController::showSummary() {
 	//Make sure the Gas thingy has the correct reference values;
